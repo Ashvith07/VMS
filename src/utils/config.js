@@ -1,0 +1,1 @@
+export const baseUrl = "http://142.93.57.132/Goodworks-VMS-php"
