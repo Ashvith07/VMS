@@ -8,6 +8,7 @@ import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './utils/configureStore'
 import history from './utils/history';
+
 export const store = configureStore()
 
 

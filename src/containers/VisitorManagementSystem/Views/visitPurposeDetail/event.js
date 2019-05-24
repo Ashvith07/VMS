@@ -96,9 +96,9 @@ class Event extends Component {
       )
     }else{
       return(
-        <div class="midContentPanel">
+        <div className="midContentPanel">
                   <GwlLogo />
-                    <section class="formUi">
+                    <section className="formUi">
                     <FormField 
                           fieldTitle="Who are you meeting?"
                           value = {contactPerson}

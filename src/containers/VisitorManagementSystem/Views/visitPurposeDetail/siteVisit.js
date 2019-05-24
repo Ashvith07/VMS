@@ -24,7 +24,7 @@ class SiteVisit extends Component {
 
   static getDerivedStateFromProps(props){
   
-    const {error ,requesting,view,visitDetailPage} = props.visitor
+    const {error ,requesting,view} = props.visitor
     if(error && !requesting && view === "purposeDetail"){
       props.history.push(`/visit_purpose`)
     }

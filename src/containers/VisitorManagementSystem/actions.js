@@ -5,7 +5,8 @@ import {
   SEND_OTP_REQ,
   SEND_VISITOR_INFO_REQ,
   SEND_VISIT_PURPOSE_REQ,
-  SEND_PURPOSE_DETAIL_REQ
+  SEND_PURPOSE_DETAIL_REQ,
+  SEND_POST_IMG_REQ
  } from './constants';
 
 export function sendMobileNumber(mobileNo) {
@@ -38,12 +39,12 @@ export function sendVisitorInfo(token,firstName,lastName,location,companyName,em
   };
 }
 
-export function sendVisitPurpose(visitPurpose,token) {
+export function sendVisitPurpose(visitPurpose,token,building,floor,wing) {
 
 
   return {
     type: SEND_VISIT_PURPOSE_REQ,
-    payload: { token,visitPurpose},
+    payload: { token,visitPurpose,building,floor,wing},
   };
 }
 
@@ -53,5 +54,14 @@ export function sendVisitPurposeDetails(token,f1,f2,f3,formId) {  //where f is f
   return {
     type: SEND_PURPOSE_DETAIL_REQ,
     payload: { token,f1,f2,f3,formId},
+  };
+}
+
+
+export function sendImage(token,imageData,uploadType) {  //where f is field from all details form
+
+  return {
+    type: SEND_POST_IMG_REQ,
+    payload: {token,imageData,uploadType},
   };
 }

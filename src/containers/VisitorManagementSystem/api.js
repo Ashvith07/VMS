@@ -56,14 +56,32 @@ export function sendVisitorInfo(token,firstName,lastName,location,companyName,em
   });
 }
 
-export function sendVisitPurpose(visitPurpose,token) {  
+export function sendVisitPurpose(visitPurpose,token,building,floor,wing) {  
 
   return axios({
     method: "post",
     url: `${baseUrl}/visitor/purpose`,
     data: {
       entry_token: token,
-      purpose_of_visit:visitPurpose
+      purpose_of_visit:visitPurpose,
+      building,
+      floor,
+      wing
+    },
+  
+  });
+}
+
+export function sendImage(token,imageData,uploadType) {  
+
+
+  return axios({
+    method: "post",
+    url: `${baseUrl}/visitor/upload_document`,
+    data: {
+      entry_token: token,
+      image_name:imageData,
+      upload_type:uploadType
     },
   
   });

@@ -13,7 +13,9 @@ import {
   SEND_VISIT_PURPOSE_REQ,
   SEND_VISIT_PURPOSE_SUCCESS,
   SEND_PURPOSE_DETAIL_REQ,
-  SEND_PURPOSE_DETAIL_SUCCESS
+  SEND_PURPOSE_DETAIL_SUCCESS,
+  SEND_POST_IMG_REQ,
+  SEND_POST_IMG_SUCCESS
  } from './constants';
 //import { SendMobile } from '../VisitorManagementSystem/api';
 import * as api from './api';
@@ -84,8 +86,8 @@ function* sendOtp(action) {
     const navigateTo = "visitPurpose"
     console.log('ooooooooooooooooooo',response);
       if(response.data.error_flag === "false"){
-        const {first_name,last_name} = response.data.result;
-        yield put({type:SEND_VISITOR_INFO_SUCCESS,first_name,last_name})
+        const {first_name,last_name,company_name,location,email} = response.data.result;
+        yield put({type:SEND_VISITOR_INFO_SUCCESS,first_name,last_name,company_name,location,email})
       }else{
         console.log('error');
         
@@ -99,9 +101,9 @@ function* sendOtp(action) {
 
     function* sendVisitPurpose(action) {
 
-      const {visitPurpose,token} = action.payload
+      const {visitPurpose,token,building,floor,wing} = action.payload
       //  console.log('pay',action.payload);
-      const response = yield call(() => api.sendVisitPurpose(visitPurpose,token));
+      const response = yield call(() => api.sendVisitPurpose(visitPurpose,token,building,floor,wing));
       const navigateTo = "purposeDetail"
         if(response.data.error_flag === "false"){
           yield put({type:SEND_VISIT_PURPOSE_SUCCESS,visitPurpose})
@@ -127,7 +129,30 @@ function* sendOtp(action) {
             const errorType = response.data.message 
             yield put({ type: HANDLE_FAILURE, error,errorType,navigateTo,formId });
           }
-        }    
+        }   
+        
+        
+        function* sendImage(action) {
+
+          const {token,imageData,uploadType} = action.payload
+          let navigateTo
+          if(uploadType === "userPhoto"){
+            navigateTo = "termsForm"
+          }else{
+            navigateTo = "idCard"
+          }
+          //  console.log('pay',action.payload);
+          const response = yield call(() => api.sendImage(token,imageData,uploadType));
+        //  const navigateTo = "termsForm"
+            if(response.data.error_flag === "false"){
+              yield put({type:SEND_POST_IMG_SUCCESS})
+            }else{
+              console.log('error');
+              const error = response.data.error_flag;
+              const errorType = response.data.message 
+              yield put({ type: HANDLE_FAILURE, error,errorType,navigateTo });
+            }
+          } 
 
 export default function* visitorManagementSystemSaga() {
 
@@ -136,6 +161,6 @@ export default function* visitorManagementSystemSaga() {
   yield takeLatest(SEND_VISITOR_INFO_REQ,sendVisitorInfo)
   yield takeLatest(SEND_VISIT_PURPOSE_REQ,sendVisitPurpose)
   yield takeLatest(SEND_PURPOSE_DETAIL_REQ,sendPurposeDetail)
-
+  yield takeLatest(SEND_POST_IMG_REQ,sendImage)
 
 }

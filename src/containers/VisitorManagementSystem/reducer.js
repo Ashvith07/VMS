@@ -15,7 +15,9 @@ import {
   SEND_VISIT_PURPOSE_REQ,
   SEND_VISIT_PURPOSE_SUCCESS,
   SEND_PURPOSE_DETAIL_REQ,
-  SEND_PURPOSE_DETAIL_SUCCESS
+  SEND_PURPOSE_DETAIL_SUCCESS,
+  SEND_POST_IMG_SUCCESS,
+  SEND_POST_IMG_REQ
  } from './constants';
 export const initialState = {
   mobile: " ",
@@ -82,7 +84,7 @@ const visitorManagementSystemReducer = (state = initialState, action) =>
           firstName:action.first_name,
           lastName:action.last_name,
           location:action.location,
-          email:action.location,
+          email:action.email,
           company:action.company_name
         }
 
@@ -97,7 +99,7 @@ const visitorManagementSystemReducer = (state = initialState, action) =>
           ...state,
           firstName:action.first_name,
           lastName:action.last_name,
-          company:action.company,
+          company:action.company_name,
           location:action.location,
           email:action.email,
           requesting: false,
@@ -126,6 +128,19 @@ const visitorManagementSystemReducer = (state = initialState, action) =>
         };
 
       case SEND_PURPOSE_DETAIL_SUCCESS:
+        return{
+          ...state,
+          requesting: false,
+          error:false,
+        }
+
+      case SEND_POST_IMG_REQ:
+        return{
+          ...state,
+          requesting: true,
+        }
+
+      case SEND_POST_IMG_SUCCESS:
         return{
           ...state,
           requesting: false,

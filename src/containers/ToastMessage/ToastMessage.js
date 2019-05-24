@@ -33,7 +33,7 @@ export class ToastMessage extends PureComponent {
     console.log(this.props);
     const {errorType} = this.props
     console.log('error',errorType);
-    const errorMessage = "Opps..!!! Something went Wrong..!!"
+  //  const errorMessage = "Opps..!!! Something went Wrong..!!"
     
     
     const { isActive } = this.state;

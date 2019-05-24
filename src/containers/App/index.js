@@ -30,6 +30,8 @@ import Event from '../VisitorManagementSystem/Views/visitPurposeDetail/event';
 import Meeting from '../VisitorManagementSystem/Views/visitPurposeDetail/meeting';
 import SiteVisit from '../VisitorManagementSystem/Views/visitPurposeDetail/siteVisit';
 import PhotoCapture from '../VisitorManagementSystem/Views/photoCapture/photoCapture';
+import Terms from '../VisitorManagementSystem/Views/terms/terms';
+import IdCard from '../VisitorManagementSystem/Views/idCard/idCard';
 
 export default function App() {
   const currentPath = window.location.pathname;
@@ -75,10 +77,13 @@ export default function App() {
         <Route exact path="/visit_purpose" component={VisitPurposeForm} />
         <Route exact path="/photo_capture" component={PhotoCapture} />
 
-
         <Route extact path="/purposeDetail/Event" component={Event} />
         <Route extact path="/purposeDetail/Meeting" component={Meeting} />
         <Route extact path="/purposeDetail/SiteVisit" component={SiteVisit} />
+
+         <Route extact path="/visit_terms_condition" component={Terms} />
+         <Route extact path="/idcard_generate" component={IdCard} />
+
       </Switch>
     </BrowserRouter>
             <div className="mastfoot">
