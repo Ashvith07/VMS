@@ -30,9 +30,7 @@ export class ToastMessage extends PureComponent {
   }
 
   render() {
-    console.log(this.props);
     const {errorType} = this.props
-    console.log('error',errorType);
   //  const errorMessage = "Opps..!!! Something went Wrong..!!"
     
     

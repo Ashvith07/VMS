@@ -57,21 +57,12 @@ class Terms extends Component{
   })
   }
 
-  
 
-  // handSubmit(){
-  //  // alert('aaaaa')
-  //   console.log('zzzzzzzzzzz',this.state.signatureData);
-    
-  // }
 
   handleCheck(){
-    //alert('clicked')
     const {isChecked} = this.state
-    console.log(this.state.signatureData);
    
 
-   // console.log(something);
     
 
     if(isChecked){
@@ -103,12 +94,10 @@ class Terms extends Component{
   }
 
   handleSubmit(e){
-    alert('clicked')
     const {token} = this.props.visitor
     const {signatureData,isChecked} = this.state
     const uploadType = "signature"
 
-  //  console.log(signatureData);
 
     if (signatureData !== "" && isChecked && token) {
       this.props.sendImage(token,signatureData,uploadType)
@@ -125,7 +114,6 @@ class Terms extends Component{
   render(){
     const {message,isChecked,nextDisabled,nxtBtnOpacity} = this.state
     const {requesting,errorType,error} = this.props.visitor
-  //  console.log('zzzzzzzzzzz',this.state.signatureData);
 
       if(requesting){
         return(
@@ -186,7 +174,6 @@ Terms.propTypes = {
 
 function mapStateToProps (state)  {
 
-  // console.log('mstp',state);
  
    return {
        visitor: state.visitor

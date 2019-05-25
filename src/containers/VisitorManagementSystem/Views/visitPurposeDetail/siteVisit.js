@@ -39,7 +39,6 @@ class SiteVisit extends Component {
   }
 
   handleFormFields(e,fieldId){
-    //alert(e.target.value)
     switch (fieldId) {
       case 1:
            this.setState({
@@ -71,16 +70,13 @@ class SiteVisit extends Component {
   }
 
   handleSubmit(e){
-    // alert('clicked')
      const {requirements, seats,aboutUs} = this.state
      const {token} = this.props.visitor
      
  
      if(token && requirements && seats && aboutUs){
-       console.log('check email validation');
        const isValid = this.isNumeric(seats)
        if(isValid){
-         console.log('navigate');
          const formId = "SiteVisit"
          this.props.sendVisitPurposeDetails(token,requirements,seats,aboutUs,formId)
          
@@ -91,7 +87,6 @@ class SiteVisit extends Component {
          })
        }
      }else{
-       console.log(`message`);
        this.setState({
          message: 'Fields should not be empty'
        })
@@ -149,7 +144,6 @@ SiteVisit.propTypes = {
 
 function mapStateToProps (state)  {
 
-  // console.log('mstp',state);
  
    return {
        visitor: state.visitor

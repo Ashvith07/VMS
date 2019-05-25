@@ -50,7 +50,7 @@ class VisitorEntryForm extends Component{
    checkEmailValid(email){
     var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
-      if(reg.test(email) == false){
+      if(reg.test(email) === false){
         return false
       }
 
@@ -58,16 +58,13 @@ class VisitorEntryForm extends Component{
    }
 
    handleSubmit(e){
-   // alert('clicked')
     const {firstName, lastName,location,email,companyName} = this.state
     const {token} = this.props.visitor
     
 
     if(token && firstName && lastName && location && email && companyName){
-      console.log('check email validation');
       const isValid = this.checkEmailValid(email)
       if(isValid){
-        console.log('navigate');
         this.props.sendInfo(token,firstName,lastName,location,companyName,email)
         
       }else{
@@ -77,7 +74,6 @@ class VisitorEntryForm extends Component{
         })
       }
     }else{
-      console.log(`message`);
       this.setState({
         message: 'Fields should not be empty'
       })
@@ -88,7 +84,6 @@ class VisitorEntryForm extends Component{
 
 
    handleFormFields(e,fieldId){
-     //alert(e.target.value)
      switch (fieldId) {
        case 1:
             this.setState({
@@ -130,7 +125,6 @@ class VisitorEntryForm extends Component{
   render(){
 
     const {requesting,errorType,error} = this.props.visitor
-    console.log('state',this.state);
     const {message} = this.state
    // const currentView = "visitorEntryForm"
 
@@ -191,7 +185,6 @@ VisitorEntryForm.propTypes = {
 
 function mapStateToProps (state)  {
 
-  // console.log('mstp',state);
  
    return {
        visitor: state.visitor

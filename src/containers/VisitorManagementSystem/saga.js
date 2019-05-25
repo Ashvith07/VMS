@@ -15,17 +15,21 @@ import {
   SEND_PURPOSE_DETAIL_REQ,
   SEND_PURPOSE_DETAIL_SUCCESS,
   SEND_POST_IMG_REQ,
-  SEND_POST_IMG_SUCCESS
+  SEND_POST_IMG_SUCCESS,
+  SEND_FEEDBACK_REQ,
+  SEND_FEEDBACK_SUCCESS,
+  SEND_CHECKLIST_REQ,
+  SEND_CHECKLIST_SUCCESS,
+  SEND_VISITOR_ID_REQ,
+  SEND_VISITOR_ID_SUCCESS
  } from './constants';
 //import { SendMobile } from '../VisitorManagementSystem/api';
 import * as api from './api';
 
 function* sendMobile(action) {
 
-//  console.log('pay',action.payload);
 const response = yield call(() => api.sendMobile(action.payload.mobile_no));
 const navigateTo = "otp"
-console.log(response);
 
   if(response.data.error_flag === "false"){
     const mobile = response.data.result.phone_no;
@@ -42,10 +46,8 @@ console.log(response);
 function* sendOtp(action) {
 
   const {otp,token} = action.payload
-  //  console.log('pay',action.payload);
   const response = yield call(() => api.sendOtp(otp,token));
   const navigateTo = "entryForm"
-  console.log('ooooooooooooooooooo',response);
     if(response.data.error_flag === "false"){
       const is_recurring = response.data.result.is_recurring;
 
@@ -54,7 +56,6 @@ function* sendOtp(action) {
         const userInfo = yield call(() => api.getUserInfo(token));
 
         const {company_name, email,first_name,last_name,location} = userInfo.data.result
-        console.log(response);
 
         yield put({type:SEND_OTP_SUCCESS,is_recurring,first_name,last_name,company_name,location,email})
       }else{
@@ -68,7 +69,6 @@ function* sendOtp(action) {
 
      
     }else{
-      console.log('error');
       
 
       const error = response.data.error_flag;
@@ -81,15 +81,12 @@ function* sendOtp(action) {
   function* sendVisitorInfo(action) {
 
     const {token,firstName,lastName,location,companyName,email} = action.payload
-    //  console.log('pay',action.payload);
     const response = yield call(() => api.sendVisitorInfo(token,firstName,lastName,location,companyName,email));
     const navigateTo = "visitPurpose"
-    console.log('ooooooooooooooooooo',response);
       if(response.data.error_flag === "false"){
         const {first_name,last_name,company_name,location,email} = response.data.result;
         yield put({type:SEND_VISITOR_INFO_SUCCESS,first_name,last_name,company_name,location,email})
       }else{
-        console.log('error');
         
   
         const error = response.data.error_flag;
@@ -102,13 +99,11 @@ function* sendOtp(action) {
     function* sendVisitPurpose(action) {
 
       const {visitPurpose,token,building,floor,wing} = action.payload
-      //  console.log('pay',action.payload);
       const response = yield call(() => api.sendVisitPurpose(visitPurpose,token,building,floor,wing));
       const navigateTo = "purposeDetail"
         if(response.data.error_flag === "false"){
           yield put({type:SEND_VISIT_PURPOSE_SUCCESS,visitPurpose})
         }else{
-          console.log('error');
           const error = response.data.error_flag;
           const errorType = response.data.message 
           yield put({ type: HANDLE_FAILURE, error,errorType,navigateTo });
@@ -118,13 +113,11 @@ function* sendOtp(action) {
       function* sendPurposeDetail(action) {
 
         const {token,f1,f2,f3,formId} = action.payload
-        //  console.log('pay',action.payload);
         const response = yield call(() => api.sendPurposeDetail(token,f1,f2,f3,formId));
         const navigateTo = "capturePhoto"
           if(response.data.error_flag === "false"){
             yield put({type:SEND_PURPOSE_DETAIL_SUCCESS})
           }else{
-            console.log('error');
             const error = response.data.error_flag;
             const errorType = response.data.message 
             yield put({ type: HANDLE_FAILURE, error,errorType,navigateTo,formId });
@@ -141,18 +134,66 @@ function* sendOtp(action) {
           }else{
             navigateTo = "idCard"
           }
-          //  console.log('pay',action.payload);
           const response = yield call(() => api.sendImage(token,imageData,uploadType));
         //  const navigateTo = "termsForm"
             if(response.data.error_flag === "false"){
               yield put({type:SEND_POST_IMG_SUCCESS})
             }else{
-              console.log('error');
               const error = response.data.error_flag;
               const errorType = response.data.message 
               yield put({ type: HANDLE_FAILURE, error,errorType,navigateTo });
             }
           } 
+
+          function* sendFeedback(action) {
+
+            const {token,rating,suggestions} = action.payload
+            let navigateTo = "preEntry"
+           
+            const response = yield call(() => api.sendFeedback(token,rating,suggestions));
+          //  const navigateTo = "termsForm"
+              if(response.data.error_flag === "false"){
+                yield put({type:SEND_FEEDBACK_SUCCESS})
+              }else{
+                const error = response.data.error_flag;
+                const errorType = response.data.message 
+                yield put({ type: HANDLE_FAILURE, error,errorType,navigateTo });
+              }
+            } 
+
+
+          function* sendCheckList(action) {
+
+            const {token,meetingRooms,officeSpaces,others} = action.payload
+            let navigateTo = "feedback"
+           
+            const response = yield call(() => api.sendCheckList(token,meetingRooms,officeSpaces,others));
+          //  const navigateTo = "termsForm"
+              if(response.data.error_flag === "false"){
+                yield put({type:SEND_CHECKLIST_SUCCESS})
+              }else{
+                const error = response.data.error_flag;
+                const errorType = response.data.message 
+                yield put({ type: HANDLE_FAILURE, error,errorType,navigateTo });
+              }
+            } 
+
+            function* sendVisitorId(action) {
+
+              const {visitorId} = action.payload
+              let navigateTo = "feedback"
+             
+              const response = yield call(() => api.sendVisitorId(visitorId));
+              const {entry_token,visitor_ID_no,phone_no} = response.data.result
+            //  const navigateTo = "termsForm"
+                if(response.data.error_flag === "false"){
+                  yield put({type:SEND_VISITOR_ID_SUCCESS,entry_token,visitor_ID_no,phone_no})
+                }else{
+                  const error = response.data.error_flag;
+                  const errorType = response.data.message 
+                  yield put({ type: HANDLE_FAILURE, error,errorType,navigateTo });
+                }
+              } 
 
 export default function* visitorManagementSystemSaga() {
 
@@ -162,5 +203,9 @@ export default function* visitorManagementSystemSaga() {
   yield takeLatest(SEND_VISIT_PURPOSE_REQ,sendVisitPurpose)
   yield takeLatest(SEND_PURPOSE_DETAIL_REQ,sendPurposeDetail)
   yield takeLatest(SEND_POST_IMG_REQ,sendImage)
+  yield takeLatest(SEND_FEEDBACK_REQ,sendFeedback)
+  yield takeLatest(SEND_CHECKLIST_REQ,sendCheckList)
+  yield takeLatest(SEND_VISITOR_ID_REQ,sendVisitorId)
+
 
 }

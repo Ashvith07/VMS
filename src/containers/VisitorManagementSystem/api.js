@@ -39,6 +39,18 @@ export function sendOtp(otp,token) {
   });
 }
 
+export function sendVisitorId(visitorId) {  
+
+  return axios({
+    method: "post",
+    url: `${baseUrl}/visitor/check_feedback`,
+    data: {
+      visitor_card_no: visitorId,
+    },
+  
+  });
+}
+
 export function sendVisitorInfo(token,firstName,lastName,location,companyName,email) {  
 
   return axios({
@@ -82,6 +94,38 @@ export function sendImage(token,imageData,uploadType) {
       entry_token: token,
       image_name:imageData,
       upload_type:uploadType
+    },
+  
+  });
+}
+
+export function sendCheckList(token,meetingRooms,officeSpaces,others) {  
+
+
+  return axios({
+    method: "post",
+    url: `${baseUrl}/visitor/upload_document`,
+    data: {
+      entry_token: token,
+      checklist:{
+        Meeting_room: meetingRooms,
+        Office_space: officeSpaces,
+        Others: others
+     }
+    },
+  
+  });
+}
+
+export function sendFeedback(token,rating,suggestions) {  
+
+  return axios({
+    method: "post",
+    url: `${baseUrl}/visitor/feedback`,
+    data: {
+      entry_token: token,
+      how_was_your_visit:rating,
+      any_suggestions:suggestions
     },
   
   });

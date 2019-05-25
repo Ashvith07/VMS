@@ -41,7 +41,6 @@ class VisitPurposeForm extends Component{
   }
 
   handleRadioInput(e){
-    alert(e.target.value)
     const visitPurpose = e.target.value
     if (visitPurpose === "SiteVisit") {
       this.setState({
@@ -71,7 +70,6 @@ class VisitPurposeForm extends Component{
         message:'Please select your visit purpose'
       })
     }else{
-      console.log('navigatge');
 
       this.props.sendVisitPurpose(visitPurpose,token,building,floor,wing)
       
@@ -79,7 +77,6 @@ class VisitPurposeForm extends Component{
   }
 
   handleFormFields(e,fieldId){
-    //alert(e.target.value)
     switch (fieldId) {
       case 1:
            this.setState({
@@ -192,7 +189,6 @@ VisitPurposeForm.propTypes = {
 
 function mapStateToProps (state)  {
 
-  // console.log('mstp',state);
  
    return {
        visitor: state.visitor

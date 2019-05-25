@@ -17,7 +17,14 @@ import {
   SEND_PURPOSE_DETAIL_REQ,
   SEND_PURPOSE_DETAIL_SUCCESS,
   SEND_POST_IMG_SUCCESS,
-  SEND_POST_IMG_REQ
+  SEND_POST_IMG_REQ,
+  ADD_NEW_VISITOR,
+  SEND_FEEDBACK_REQ,
+  SEND_FEEDBACK_SUCCESS,
+  SEND_CHECKLIST_SUCCESS,
+  SEND_CHECKLIST_REQ,
+  SEND_VISITOR_ID_REQ,
+  SEND_VISITOR_ID_SUCCESS
  } from './constants';
 export const initialState = {
   mobile: " ",
@@ -34,14 +41,19 @@ export const initialState = {
   company:'',
 
   visitPurpose:'',
-  visitDetailPage:''
+  visitDetailPage:'',
+
+  visitorIDNo:''
 };
 
 /* eslint-disable default-case, no-param-reassign */
 const visitorManagementSystemReducer = (state = initialState, action) =>
   produce(state, (/* draft */) => {
-  console.log('actionssssssss', action)
     switch (action.type) {
+
+      case ADD_NEW_VISITOR:
+        return initialState
+
       case SEND_MOBILE_NUMBER_REQ:
         return {
           ...state,
@@ -146,6 +158,45 @@ const visitorManagementSystemReducer = (state = initialState, action) =>
           requesting: false,
           error:false,
         }
+
+      case SEND_FEEDBACK_REQ:
+        return{
+          ...state,
+          requesting: true,
+        }
+
+      case SEND_FEEDBACK_SUCCESS:
+          return initialState
+
+      case SEND_CHECKLIST_REQ:
+          return{
+            ...state,
+            requesting: true,
+          }
+  
+        case SEND_CHECKLIST_SUCCESS:
+          return{
+            ...state,
+            requesting: false,
+            error:false,
+          }
+
+        case SEND_VISITOR_ID_REQ:
+          return{
+            ...state,
+            requesting: true,
+          }
+  
+        case SEND_VISITOR_ID_SUCCESS:
+          return{
+            ...state,
+            requesting: false,
+            error:false,
+            token:action.entry_token,
+            mobile:action.phone_no,
+            visitorIDNo:action.visitor_ID_no
+          }
+        
   
       default:
         return state;

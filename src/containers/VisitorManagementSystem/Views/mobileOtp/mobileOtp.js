@@ -42,7 +42,6 @@ class MobileOtp extends Component{
 
       e.preventDefault();
     }else{
-      console.log('send otp');
 
       this.props.sendOtp(otp,token)
       
@@ -55,7 +54,6 @@ class MobileOtp extends Component{
    
        const _position = otp.indexOf('-')
    
-       console.log('_position',_position);
    
        if(otp.length < 11){
          
@@ -79,7 +77,6 @@ class MobileOtp extends Component{
      backReplaceAt(string, index, replace) {
          const lastduplicateChar = string.lastIndexOf(index)
          
-         console.log('aaaaaaaaaa',string,index,replace);
          
          return string.substring(0, lastduplicateChar) + replace + string.substring(lastduplicateChar + 1);
        }
@@ -114,7 +111,6 @@ class MobileOtp extends Component{
      }
 
   render(){
-    console.log('sendotpsssssssss',this.props);
     const {mobile , requesting,errorType,error} = this.props.visitor
 
     const {otp , message} = this.state
@@ -165,7 +161,6 @@ MobileOtp.propTypes = {
 
 function mapStateToProps (state)  {
 
- // console.log('mstp',state);
 
   return {
       visitor: state.visitor

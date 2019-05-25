@@ -5,33 +5,32 @@ import { compose } from 'redux';
 //import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import '../../vmsStyles.css';
-import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { ToastMessage } from '../../../ToastMessage/ToastMessage';
 import axios from 'axios'
-
+import { addNewVisitor } from '../../actions';
 class IdCard extends Component{
 
   state = {
     messasge:'',
     visitorImgUrl:'',
-    visitorSigUrl:''
+    visitorSigUrl:'',
+    visitorIDNo:''
   }
 
   componentDidMount(){
 
     const {token} = this.props.visitor
 
-    console.log('componentdidmount');
     axios.post('http://142.93.57.132/Goodworks-VMS-php/visitor/card',{
       entry_token:token
     }).then((res) => {
-      console.log(res);
-      const {visitor_image,visitor_signature} = res.data.result
+      const {visitor_image,visitor_signature,visitor_ID_no} = res.data.result
 
       this.setState({
         visitorImgUrl:visitor_image,
-        visitorSigUrl:visitor_signature
+        visitorSigUrl:visitor_signature,
+        visitorIDNo:visitor_ID_no
       })
       
     }).catch((err) => {
@@ -68,13 +67,18 @@ class IdCard extends Component{
 
     document.body.innerHTML = originalContents;
   }
+
+  addNewVisitorHandler(){
+    this.props.addNewVisitor()
+  }
    
  
   render(){
 
     const {requesting,errorType,error,firstName,lastName,company,email,location,mobile,visitPurpose} = this.props.visitor
-    const {messasge,visitorImgUrl,visitorSigUrl} = this.state
-
+    const {messasge,visitorImgUrl,visitorSigUrl,visitorIDNo} = this.state
+    let visitTo
+    visitPurpose === "SiteVisit" ? visitTo = "/checklist" : visitTo = "/feedback"
 
     if (requesting) {
         return(
@@ -85,7 +89,7 @@ class IdCard extends Component{
         <div className={"midContentPanel"}>
 		        <section className={"formUi"}>
                     <div className={"idCard"} id="printableArea">
-                        <h2>Visitor</h2>
+                        <h2>Visitor : {visitorIDNo}</h2>
                         <div className={"idCont"}>
                             <div className="row">
                                 <div className="col-sm-4">
@@ -117,10 +121,10 @@ class IdCard extends Component{
                                 <button className="btn-blue full"><i className="glyphicon glyphicon-print"></i> Print</button>
                             </div>
                             <div className="col-sm-6">
-                                <button className="btn-green full">Next</button>
+                                <Link to={`${visitTo}` }><button className="btn-green full">Next</button></Link>
                             </div>
                         </div>
-                        <button className="btn-orange full">Add new visitor</button>
+                        <Link onClick = {() => this.addNewVisitorHandler()}to='/preEntry'><button className="btn-orange full">Add new visitor</button></Link>
                     {/* <button onClick = {() => this.printId('printableArea')} className={classNames("btnGreen", "full")}><i className="glyphicon glyphicon-print"></i> Print</button>
                     <Link onClick={(e) => this.handleSubmit(e)} to="/idcard_generate"><button  className={classNames("btnGreen", "full")}>Next</button></Link> */}
 
@@ -139,7 +143,6 @@ class IdCard extends Component{
 
 function mapStateToProps (state)  {
 
-  // console.log('mstp',state);
  
    return {
        visitor: state.visitor
@@ -149,6 +152,8 @@ function mapStateToProps (state)  {
  function mapDispatchToProps(dispatch) {
   return {
   //  sendImage : (token,imageData,uploadType) => dispatch(sendImage(token,imageData,uploadType))
+  addNewVisitor : () => dispatch(addNewVisitor())
+
   };
 }
 

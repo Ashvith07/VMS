@@ -37,7 +37,6 @@ class Event extends Component {
   }
 
   handleFormFields(e,fieldId){
-    //alert(e.target.value)
     switch (fieldId) {
       case 1:
            this.setState({
@@ -65,7 +64,6 @@ class Event extends Component {
   }
 
   handleSubmit(e){
-    // alert('clicked')
      const {contactPerson,company ,eventDetail} = this.state
      const {token} = this.props.visitor
      
@@ -76,7 +74,6 @@ class Event extends Component {
        this.props.sendVisitPurposeDetails(token,contactPerson,company,eventDetail,formId)
       
      }else{
-       console.log(`message`);
        this.setState({
          message: 'Fields should not be empty'
        })
@@ -134,7 +131,6 @@ Event.propTypes = {
 
 function mapStateToProps (state)  {
 
-  // console.log('mstp',state);
  
    return {
        visitor: state.visitor

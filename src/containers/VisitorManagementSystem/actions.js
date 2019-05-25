@@ -6,12 +6,15 @@ import {
   SEND_VISITOR_INFO_REQ,
   SEND_VISIT_PURPOSE_REQ,
   SEND_PURPOSE_DETAIL_REQ,
-  SEND_POST_IMG_REQ
+  SEND_POST_IMG_REQ,
+  ADD_NEW_VISITOR,
+  SEND_FEEDBACK_REQ,
+  SEND_CHECKLIST_REQ,
+  SEND_VISITOR_ID_REQ
  } from './constants';
 
 export function sendMobileNumber(mobileNo) {
 
- // console.log('InsideActions',mobileNo);
   
 
   return {
@@ -64,4 +67,31 @@ export function sendImage(token,imageData,uploadType) {  //where f is field from
     type: SEND_POST_IMG_REQ,
     payload: {token,imageData,uploadType},
   };
+}
+
+export function addNewVisitor(){
+  return{
+    type:ADD_NEW_VISITOR
+  }
+}
+
+export function sendFeedback(token,rating,suggestions){
+  return{
+    type:SEND_FEEDBACK_REQ,
+    payload:{token,rating,suggestions}
+  }
+}
+
+export function sendCheckList(token,meetingRooms,officeSpaces,others){
+  return{
+    type:SEND_CHECKLIST_REQ,
+    payload:{token,meetingRooms,officeSpaces,others}
+  }
+}
+
+export function sendVisitorId(visitorId){
+  return{
+    type:SEND_VISITOR_ID_REQ,
+    payload:{visitorId}
+  }
 }

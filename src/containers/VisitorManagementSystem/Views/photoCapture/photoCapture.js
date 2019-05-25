@@ -46,7 +46,6 @@ class PhotoCapture extends Component{
   capture = () => {
   const imageSrc = this.webcam.getScreenshot();
 
-  //console.log(imageSrc);
   this.setState({
     imageData:imageSrc,
     captureImage:false,
@@ -82,7 +81,6 @@ class PhotoCapture extends Component{
     const uploadType = "photo"
 
     if (imageData !== "" && token) {
-     // console.log('next');
       this.props.sendImage(token,imageData,uploadType)
 
     }else{
@@ -153,7 +151,6 @@ PhotoCapture.propTypes = {
 
 function mapStateToProps (state)  {
 
-  // console.log('mstp',state);
  
    return {
        visitor: state.visitor
