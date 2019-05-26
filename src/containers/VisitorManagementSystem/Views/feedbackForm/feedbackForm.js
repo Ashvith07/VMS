@@ -22,7 +22,7 @@ class FeedbackForm extends Component{
   
     const {error ,requesting,view} = props.visitor
     if(error && !requesting && view === "feedback"){
-      props.history.push(`/preEntry`)
+      props.history.push(`/`)
     }
 
     return null

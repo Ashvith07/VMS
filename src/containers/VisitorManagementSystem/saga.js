@@ -184,9 +184,11 @@ function* sendOtp(action) {
               let navigateTo = "feedback"
              
               const response = yield call(() => api.sendVisitorId(visitorId));
-              const {entry_token,visitor_ID_no,phone_no} = response.data.result
+             
             //  const navigateTo = "termsForm"
                 if(response.data.error_flag === "false"){
+                  const {entry_token,visitor_ID_no,phone_no} = response.data.result
+                  
                   yield put({type:SEND_VISITOR_ID_SUCCESS,entry_token,visitor_ID_no,phone_no})
                 }else{
                   const error = response.data.error_flag;

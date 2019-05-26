@@ -8,15 +8,6 @@ export class ToastMessage extends PureComponent {
     isActive: false,
   }
 
-  // openSnackBar = (message = 'Something went wrong...') => {
-  //   this.message = message;
-  //   this.setState({ isActive: true }, () => {
-  //     setTimeout(() => {
-  //       this.setState({ isActive: false });
-  //     }, 3000);
-  //   });
-  // }
-
   componentDidMount(){
     if(this.props.error){ 
       this.setState({ 

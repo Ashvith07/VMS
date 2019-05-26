@@ -1,13 +1,12 @@
-import React,{Component} from "react";
+import React from "react";
 import { GwlLogo } from "./gwlLogo";
 import '../containers/VisitorManagementSystem/vmsStyles.css'
 
-class About extends Component{
-  componentDidMount(){
-    console.log('didmount');
+const About =  () => {
+  // componentDidMount(){
+  //   console.log('didmount');
     
-  }
-  render(){
+  // }
     return (
      
       <div className="midContentPanel">
@@ -123,9 +122,7 @@ class About extends Component{
           </div>
         </section>
       </div>
-);
-  }
-   
+    );
   }
 
 export default About
