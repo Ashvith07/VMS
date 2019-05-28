@@ -111,7 +111,7 @@ export function sendCheckList(token,meetingRooms,officeSpaces,others) {
         Meeting_room: meetingRooms,
         Office_space: officeSpaces,
         Others: others
-     }
+      }
     },
   
   });

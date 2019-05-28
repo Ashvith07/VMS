@@ -22,6 +22,15 @@ class VisitorEntryForm extends Component{
     message:''
   }
 
+  componentDidMount(){
+    const currentLocation = window.location.href
+
+    window.history.pushState(null,null,currentLocation)
+    window.onpopstate = function(){
+      window.history.go(1)
+    }
+  }
+
   static getDerivedStateFromProps(props){
   
     const {error ,requesting,view,is_recurring} = props.visitor
