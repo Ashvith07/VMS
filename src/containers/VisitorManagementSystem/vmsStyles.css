@@ -255,7 +255,7 @@
       resize: none;
   }
 
-  .form-ui h3{
+  .formUi h3{
        font-size: 15px;
   }
   .btnOutline.full,
@@ -471,13 +471,13 @@
        color: rgba(255, 255, 255, .75);
     
     }
-    .form-ui h2{
+    .formUi h2{
     
        font-size: 20px;
     
     }
     
-    .terms li a, .form-ui a{color: #31bd7f;}
+    .terms li a, .formUi a{color: #31bd7f;}
     
     .id-card h2 span{color: #31bd7f;}
     

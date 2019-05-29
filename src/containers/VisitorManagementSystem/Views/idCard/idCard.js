@@ -66,6 +66,8 @@ class IdCard extends Component{
     window.print();
 
     document.body.innerHTML = originalContents;
+
+    window.close();
   }
 
   addNewVisitorHandler(){
@@ -94,7 +96,7 @@ class IdCard extends Component{
                             <div className="row">
                                 <div className="col-sm-4">
                                     <img src={visitorImgUrl} alt="#" className={"idImg"} /> 
-                                    <img src={visitorSigUrl} alt="" class="id-img no-bdr" />                          
+                                    <img src={visitorSigUrl} alt="" className="id-img no-bdr" />                          
                                 </div>
                                 <div className="col-sm-8">
                                     <p><span>{firstName} {lastName}</span></p>
@@ -118,7 +120,7 @@ class IdCard extends Component{
                     </div>
                     <div className="row">
                           <div className="col-sm-6">
-                                <button className="btn-blue full"><i className="glyphicon glyphicon-print"></i> Print</button>
+                                <button onClick = {() => this.printId('printableArea')} className="btn-blue full"><i className="glyphicon glyphicon-print"></i> Print</button>
                             </div>
                             <div className="col-sm-6">
                                 <Link to={`${visitTo}` }><button className="btn-green full">Next</button></Link>
