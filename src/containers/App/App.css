@@ -2,6 +2,7 @@
 
 .app{
   background-color: #333;
+  touch-action: manipulation;
 }
 
 
