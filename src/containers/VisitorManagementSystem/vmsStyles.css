@@ -136,7 +136,8 @@
 
   /* -- Mobile Number -- */
   img.logoSub{
-      max-width: 150px;
+      max-width: 250px;
+      margin-bottom:15px;
   }
   .mobBox{
       /* background: #fff; */

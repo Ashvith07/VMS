@@ -104,7 +104,7 @@ class FeedbackForm extends Component{
                         value={suggestions}
                         changeHandle={(e) => this.handleSuggestions(e)}
                         />
-                        <Link onClick={() => this.handleSubmit()} to="/"><button className="btn-green full">Next</button></ Link>
+                        <Link onClick={() => this.handleSubmit()} to="/"><button className="btn-green full">Submit</button></ Link>
                     </section>
 
               <div style={{ height : "30px", lineHeight : "30px"}}>

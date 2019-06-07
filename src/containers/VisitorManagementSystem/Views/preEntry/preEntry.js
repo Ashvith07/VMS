@@ -67,7 +67,7 @@ class PreEntry extends Component{
         <GwlLogo />
         <section className="formUi">
             <Link to="/mobile_entry" ><button className="btn-green full">New Visitor</button></Link>
-            <button onClick = {() => this.openSnackBar()} className="btn-orange full">PROVIDE FEEDBACK FOR EXISTING VISITOR</button>
+            <button onClick = {() => this.openSnackBar()} className="btn-orange full">FEEDBACK</button>
             <VisitorNoDialog  
             isActive={isActive}
             closeSnack = {() => this.closeSnackBar()}

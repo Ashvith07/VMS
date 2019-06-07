@@ -11,6 +11,7 @@ import { Loader } from '../../../../components/loader';
 import {sendVisitPurpose} from '../../actions'
 import { SelectField } from '../../../../components/selectField';
 import { FormField } from '../../../../components/formField';
+import axios from 'axios'
 
 class VisitPurposeForm extends Component{
 
@@ -19,7 +20,25 @@ class VisitPurposeForm extends Component{
     message:'',
     building:'',
     floor:'',
-    wing:''
+    wing:'',
+
+    locations:[] //newly added from api cowork
+  }
+
+  componentDidMount(){
+    axios.post('http://142.93.57.132/Goodworks-VMS-php/cowork_locations',{
+     // entry_token:token
+    }).then((res) => {
+      const {result} = res.data
+      
+      this.setState({
+        locations:result,
+      })
+      
+    }).catch((err) => {
+      console.log(err);
+      
+    })
   }
 
   static getDerivedStateFromProps(props){
@@ -42,7 +61,7 @@ class VisitPurposeForm extends Component{
 
   handleRadioInput(e){
     const visitPurpose = e.target.value
-    if (visitPurpose === "SiteVisit") {
+    if (visitPurpose === "Site Visit") {
       this.setState({
         visitPurpose,
         message:''
@@ -106,7 +125,10 @@ class VisitPurposeForm extends Component{
   render(){
 
     const {requesting,errorType,error} = this.props.visitor
-    const {visitPurpose,message,building,floor,wing} = this.state
+    const {visitPurpose,message,building,floor,wing,locations} = this.state
+
+    console.log(locations,'aaaaaaaaaaa');
+    
 
     if (requesting) {
       return(
@@ -119,11 +141,23 @@ class VisitPurposeForm extends Component{
               <section className={"formUi"}>
                       
                       <div>
-                         <FormField 
+                         {/* <FormField 
                           fieldTitle="Building"
                           value = {building}
                           changeHandle = {(e) => this.handleFormFields(e,1)}
-                          />
+                          /> */}
+
+                        <label>Building</label>
+                        <div className="styledSelect">
+                        <select value= {building} onChange={(e) => this.handleFormFields(e,1)}>
+                            {locations.map(location => 
+                             <option key = {location} value={location}>{location}</option>
+                            )}
+                            {/* <option value="Official">Official</option>
+                            <option value="Interview">Interview</option>
+                            <option value="Personal">Personal</option> */}
+                        </select>
+                         </div>
                         <div className="row">
                             <div className="col-sm-6">
                                 <label>Floor </label>
@@ -150,7 +184,7 @@ class VisitPurposeForm extends Component{
                         <label>Purpose of visit : </label>
                           <SelectField 
                             id="site-visit"
-                            value = "SiteVisit"
+                            value = "Site Visit"
                             forr="site-visit"
                             changeRadioInput =  {(e) => this.handleRadioInput(e)}
                           />
