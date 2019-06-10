@@ -10,29 +10,29 @@ import { sendVisitorId } from '../VisitorManagementSystem/actions';
 class VisitorNoDialog extends PureComponent {
 
   state={
-    visitorId:''
+    mobile:''
   }
 
-  handlevisitorId(e){
+  handleVisitorMobile(e){
 
     this.setState({
-      visitorId:e.target.value
+      mobile:e.target.value
     })
   }
 
   handleSubmit(){
-    const visitorId = this.state.visitorId
-    this.props.sendVisitorId(visitorId)
+    const mobile = this.state.mobile
+    this.props.sendVisitorId(mobile) //here mobile number is identity of visitor
   }
 
   render() {
-    const visitorId = this.state.visitorId
+    const mobile = this.state.mobile
     
     const {isActive,closeSnack} = this.props;
     return (
       <div className = {isActive ? ["vidsnackbar", "show"].join(" ") : "vidsnackbar"}>
-        <div>Visitor Card Id</div>
-        <input style={{color:'black',background:'rgba(255, 255, 255, 1)'}} value={visitorId} onChange={(e) => {this.handlevisitorId(e)}}/>
+        <div>Mobile Number</div>
+        <input style={{color:'black',background:'rgba(255, 255, 255, 1)'}} value={mobile} onChange={(e) => {this.handleVisitorMobile(e)}}/>
         <div className="row">
             <div className="col-sm-6">
                 <button onClick = {closeSnack} className="btn-orange full">Close</button>
@@ -53,7 +53,7 @@ VisitorNoDialog.propTypes = {
 
  function mapDispatchToProps(dispatch) {
   return {
-    sendVisitorId : (visitorId) => dispatch(sendVisitorId(visitorId))
+    sendVisitorId : (mobile) => dispatch(sendVisitorId(mobile)) //here mobile number is identity of visitor
   };
 }
 

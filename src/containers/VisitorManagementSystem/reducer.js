@@ -187,7 +187,7 @@ const visitorManagementSystemReducer = (state = initialState, action) =>
             requesting: true,
           }
   
-        case SEND_VISITOR_ID_SUCCESS:
+        case SEND_VISITOR_ID_SUCCESS:   //here mobile number is identity of visitor
           return{
             ...state,
             requesting: false,

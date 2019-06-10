@@ -20,7 +20,7 @@ import MobileEntry from '../VisitorManagementSystem/Views/mobileEntry/mobileEntr
 import MobileOtp from '../VisitorManagementSystem/Views/mobileOtp/mobileOtp';
 import VisitorEntryForm from '../VisitorManagementSystem/Views/visitorEntryForm/visitorEntryForm';
 import VisitPurposeForm from '../VisitorManagementSystem/Views/visitPurposeForm/visitPurposeForm';
-import Event from '../VisitorManagementSystem/Views/visitPurposeDetail/event';
+import Events from '../VisitorManagementSystem/Views/visitPurposeDetail/event';
 import Meeting from '../VisitorManagementSystem/Views/visitPurposeDetail/meeting';
 import SiteVisit from '../VisitorManagementSystem/Views/visitPurposeDetail/siteVisit';
 import PhotoCapture from '../VisitorManagementSystem/Views/photoCapture/photoCapture';
@@ -81,9 +81,9 @@ const  App = () => {
           <Route path="/visit_purpose" component={VisitPurposeForm} />
           <Route path="/photo_capture" component={PhotoCapture} />
   
-          <Route path="/purposeDetail/Event" component={Event} />
+          <Route path="/purposeDetail/Event" component={Events} />
           <Route path="/purposeDetail/Meeting" component={Meeting} />
-          <Route path="/purposeDetail/SiteVisit" component={SiteVisit} />
+          <Route path="/purposeDetail/Site Visit" component={SiteVisit} />
   
           <Route path="/visit_terms_condition" component={Terms} />
           <Route path="/idcard_generate" component={IdCard} />

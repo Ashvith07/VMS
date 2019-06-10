@@ -164,26 +164,27 @@ function* sendOtp(action) {
 
           function* sendCheckList(action) {
 
-            const {token,meetingRooms,officeSpaces,others} = action.payload
-            let navigateTo = "feedback"
+          //  const {token,checklist} = action.payload
+         //   let navigateTo = "feedback"
            
-            const response = yield call(() => api.sendCheckList(token,meetingRooms,officeSpaces,others));
+        //    const response = yield call(() => api.sendCheckList(token,checklist));
           //  const navigateTo = "termsForm"
-              if(response.data.error_flag === "false"){
+          //    if(response.data.error_flag === "false"){
                 yield put({type:SEND_CHECKLIST_SUCCESS})
-              }else{
-                const error = response.data.error_flag;
-                const errorType = response.data.message 
-                yield put({ type: HANDLE_FAILURE, error,errorType,navigateTo });
-              }
+            //  }else{
+            //    const error = response.data.error_flag;
+            //    const errorType = response.data.message 
+            //    yield put({ type: HANDLE_FAILURE, error,errorType,navigateTo });
+            //  }
             } 
 
-            function* sendVisitorId(action) {
+            function* sendVisitorId(action) { //here mobile number is identity of visitor
 
-              const {visitorId} = action.payload
+              debugger
+              const {mobile} = action.payload
               let navigateTo = "feedback"
              
-              const response = yield call(() => api.sendVisitorId(visitorId));
+              const response = yield call(() => api.sendVisitorId(mobile));
              
             //  const navigateTo = "termsForm"
                 if(response.data.error_flag === "false"){

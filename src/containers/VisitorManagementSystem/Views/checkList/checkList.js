@@ -10,134 +10,92 @@ import { ToastMessage } from '../../../ToastMessage/ToastMessage';
 import { GwlLogo } from '../../../../components/gwlLogo';
 import { sendCheckList } from '../../actions';
 import update from 'react-addons-update'; // ES6
+import axios from 'axios'
+import _ from 'lodash'
+
 
 
 
 class CheckList extends Component{
 
   state={
-    meetingRooms : [],
-    officeSpaces : [],
-    others : [],
-    checklists:{
-      // Meeting_room:[],
-      // Office_space:[],
-      // Others:[]
-    },
+    checklists:[],
+    tempArr:[],
+    currentHeading:''
+  }
 
-    tempMeetingarray : [],
-    tempOfficearray : [],
-    tempOthers:[]
+
+  componentDidMount(){
+    axios.post('http://142.93.57.132/Goodworks-VMS-php/checklist',{
+     // entry_token:token
+    }).then((res) => {
+      const {checklist} = res.data.result
+      
+      this.setState({
+        checklists:checklist,
+      })
+      
+    }).catch((err) => {
+      console.log(err);
+      
+    })
   }
 
   handleMeetingRooms(e){
 
-   // debugger
-    const {target:{name,value}} = e
 
-   // console.log(name,value);
+   console.log(e.target);
+
+   
+    const {target:{name,value,id}} = e
+
+    console.log(name,value,id);
     
-    console.log(name,value);
-    const arr = this.state.tempMeetingarray
-    let newArray
-
-    if(arr.includes(value)){
-      const index = arr.indexOf(value)
-
-      newArray = update(arr, {$splice: [[index, 1]]})
-      console.log(newArray);
-      
-    }else{
-      newArray = update(arr, {$push: [value]}); // => [1, 2, 3, 4]
-      console.log(newArray);
-    }
-
-    this.setState({
-      tempMeetingarray:newArray
-    },() => {
-      this.setState(prevState => ({
-        checklists: {
-            ...prevState.checklists,
-            [name]: this.state.tempMeetingarray
-        }
-    }))
-    })
-  }
-  
-  handleOfficeSpaces(e){
-
-    // debugger
-    const {target:{name,value}} = e
-
-   // console.log(name,value);
-    
-    console.log(name,value);
-    const arr = this.state.tempOfficearray
-    let newArray
-
-    if(arr.includes(value)){
-      const index = arr.indexOf(value)
-
-      newArray = update(arr, {$splice: [[index, 1]]})
-      console.log(newArray);
-      
-    }else{
-      newArray = update(arr, {$push: [value]}); // => [1, 2, 3, 4]
-      console.log(newArray);
-    }
-
-    this.setState({
-      tempOfficearray:newArray
-    },() => {
-      this.setState(prevState => ({
-        checklists: {
-            ...prevState.checklists,
-            [name]: this.state.tempOfficearray
-        }
-    }))
-    })
-  }
-
-    
-  handleOthers(e){
-
-    const {target:{name,value}} = e
-
-    // console.log(name,value);
-     
-     console.log(name,value);
-     const arr = this.state.tempOthers
+     let arr = this.state.tempArr
      let newArray
- 
-     if(arr.includes(value)){
-       const index = arr.indexOf(value)
- 
-       newArray = update(arr, {$splice: [[index, 1]]})
-       console.log(newArray);
-       
-     }else{
-       newArray = update(arr, {$push: [value]}); // => [1, 2, 3, 4]
-       console.log(newArray);
+
+     if(id !== this.state.currentHeading && this.state[id] === undefined){
+        newArray = []
+        arr = []
      }
- 
-     this.setState({
-      tempOthers:newArray
-     },() => {
-       this.setState(prevState => ({
-         checklists: {
-             ...prevState.checklists,
-             [name]: this.state.tempOthers
-         }
-     }))
-     })
+
+    if(arr.includes(value)){
+      const index = arr.indexOf(value)
+
+      newArray = update(arr, {$splice: [[index, 1]]})
+      console.log(newArray);
+      
+    }else{
+      newArray = update(arr, {$push: [value]}); // => [1, 2, 3, 4]
+      console.log(newArray);
+    }
+
+    console.log('ppppppppp',this.state.checklists);
+    
+    this.setState({
+        tempArr:newArray,
+
+    },() => {           
+        this.setState({
+            [id]:newArray,
+            currentHeading:id
+        })
+       
+    })
   }
 
   handleSubmit(){
+
+    console.log('qqqqqqqqqq',this.state);
+    const {state} = this
+
+    const checklist =_.omit(state,['checklists','currentHeading','tempArr'])
+    console.log('send',checklist); 
+    
     const token = this.props.visitor.token
+    this.props.sendCheckList(token,checklist)
 
-    const {checklists} = this.state
 
-    this.props.sendCheckList(token,checklists)
 
   }
   handleError(error,errorType){
@@ -146,16 +104,15 @@ class CheckList extends Component{
     )
   }
 
+
   render(){
-
-    console.log('rrrrr',this.state.somearray);
-    console.log('rrrrr',this.state.checklists);
-
     
     const{requesting,error,errorType} = this.props.visitor
 
-    
+    const {checklists} = this.state    
 
+    console.log(this.state);
+    
     if(requesting){
       return    <div className={"midContentPanel"}><Loader /></div>
 
@@ -165,7 +122,31 @@ class CheckList extends Component{
       <GwlLogo />
       <section className="formUi">
           <div className="terms">
-              <h3>Meeting room</h3>
+            
+            {
+                checklists.map((checklist,index) => 
+                    (
+                        <div key={checklist.heading + index}>
+                            <h3 >{checklist.heading}</h3>
+                                {checklist.item.map(item => 
+                               ( <div  key={item + checklist.heading} >
+                                    <label  >
+                                        <div  className="imageCheckbox" >
+                                        <input  id={checklist.heading} name={checklist.heading} type="checkbox" value={item} onChange={(e) => this.handleMeetingRooms(e)} />
+                                        <label  htmlFor="m20"></label>
+                                        <span  >{item}</span>
+                                        </div>
+                                    </label>
+                                </div>)
+                                  
+                                )}
+                               
+                        </div>
+                    )
+                )
+            }
+
+              {/* <h3>Meeting room</h3>
               <label>
                   <div className="imageCheckbox">
                       <input id="m20" name="Meeting_room" type="checkbox" value="m11" onChange={(e) => this.handleMeetingRooms(e)} />
@@ -186,9 +167,9 @@ class CheckList extends Component{
                       <label htmlFor="m8"></label>
                       <span>8 Seater </span>
                   </div>
-              </label>
+              </label> */}
 
-              <h3>Office space</h3>
+              {/* <h3>Office space</h3>
               <label>
                   <div className="imageCheckbox">
                       <input id="o20" name="Office_space" type="checkbox" value="o20" onChange={(e) => this.handleOfficeSpaces(e)} />
@@ -239,10 +220,10 @@ class CheckList extends Component{
                       <label htmlFor="wr"></label>
                       <span>Washrooms </span>
                   </div>
-              </label>
+              </label> */}
 
           </div>
-          <Link onClick={() => this.handleSubmit()} to="/feedback"><button className="btn-green full" data-toggle="modal" data-target="#myModal">Next</button></Link>
+          <Link onClick={() => this.handleSubmit()} to="/"><button className="btn-green full" data-toggle="modal" data-target="#myModal">Finish</button></Link>
       </section>
       <div style={{ height : "30px", lineHeight : "30px"}}>
                     {/* <span>{message}</span> */}

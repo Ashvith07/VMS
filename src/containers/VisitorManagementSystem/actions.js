@@ -82,16 +82,17 @@ export function sendFeedback(token,rating,suggestions){
   }
 }
 
-export function sendCheckList(token,meetingRooms,officeSpaces,others){
+export function sendCheckList(token,checklist){
   return{
     type:SEND_CHECKLIST_REQ,
-    payload:{token,meetingRooms,officeSpaces,others}
+    payload:{token,checklist}
   }
 }
 
-export function sendVisitorId(visitorId){
+export function sendVisitorId(mobile){  //here mobile number is identity of visitor
+  debugger
   return{
     type:SEND_VISITOR_ID_REQ,
-    payload:{visitorId}
+    payload:{mobile}
   }
 }

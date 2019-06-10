@@ -368,6 +368,23 @@
     text-transform: uppercase;
   }
 
+  .btn-outline.full {
+    width: 100%;
+}
+
+.btn-outline {
+    background-color: transparent;
+    text-shadow: none;
+    border: 1px solid #fff;
+    font-size: 12px;
+    display: inline-block;
+    padding: 10px;
+    width: 200px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
   .idCard{
       border-radius: 10px;
       /* background: #fff url(../images/cowork-logo.png) 98% 0% no-repeat;
@@ -392,8 +409,8 @@
       font-size: 16px !important;
       font-weight: bold;
       text-transform: uppercase;
-      background: #fff url(./images/cowork-logo.png) 100% 0% no-repeat;
-      background-size: 45px;
+      background: #fff url(./images/Coworks_logo_white.svg) 94% 50% no-repeat;
+      background-size: 75px;
       color: #333;
       border-radius: 10px 10px 0 0;
       border-bottom: rgba(0, 0, 0, .2) 1px solid;

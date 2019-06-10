@@ -10,7 +10,7 @@ import { ToastMessage } from '../../../ToastMessage/ToastMessage';
 import { Loader } from '../../../../components/loader';
 import {sendVisitPurpose} from '../../actions'
 import { SelectField } from '../../../../components/selectField';
-import { FormField } from '../../../../components/formField';
+//import { FormField } from '../../../../components/formField';
 import axios from 'axios'
 
 class VisitPurposeForm extends Component{
@@ -18,7 +18,7 @@ class VisitPurposeForm extends Component{
   state = {
     visitPurpose:undefined,
     message:'',
-    building:'',
+    building:"Whitefield",
     floor:'',
     wing:'',
 

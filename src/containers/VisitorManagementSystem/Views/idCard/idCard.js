@@ -15,7 +15,8 @@ class IdCard extends Component{
     messasge:'',
     visitorImgUrl:'',
     visitorSigUrl:'',
-    visitorIDNo:''
+    visitorIDNo:'',
+    mobileNumber:''
   }
 
   componentDidMount(){
@@ -25,12 +26,13 @@ class IdCard extends Component{
     axios.post('http://142.93.57.132/Goodworks-VMS-php/visitor/card',{
       entry_token:token
     }).then((res) => {
-      const {visitor_image,visitor_signature,visitor_ID_no} = res.data.result
+      const {visitor_image,visitor_signature,visitor_ID_no,phone_no} = res.data.result
 
       this.setState({
         visitorImgUrl:visitor_image,
         visitorSigUrl:visitor_signature,
-        visitorIDNo:visitor_ID_no
+        visitorIDNo:visitor_ID_no,
+        mobileNumber:phone_no
       })
       
     }).catch((err) => {
@@ -77,10 +79,10 @@ class IdCard extends Component{
  
   render(){
 
-    const {requesting,errorType,error,firstName,lastName,company,email,location,mobile,visitPurpose} = this.props.visitor
-    const {messasge,visitorImgUrl,visitorSigUrl,visitorIDNo} = this.state
+    const {requesting,errorType,error,firstName,lastName,company,email,location,visitPurpose} = this.props.visitor
+    const {messasge,visitorImgUrl,visitorSigUrl,mobileNumber} = this.state
     let visitTo
-    visitPurpose === "SiteVisit" ? visitTo = "/checklist" : visitTo = "/feedback"
+    visitPurpose === "Site Visit" ? visitTo = "/checklist" : visitTo = "/feedback"
 
     if (requesting) {
         return(
@@ -91,7 +93,7 @@ class IdCard extends Component{
         <div className={"midContentPanel"}>
 		        <section className={"formUi"}>
                     <div className={"idCard"} id="printableArea">
-                        <h2>Visitor : {visitorIDNo}</h2>
+                        <h2>Visitor : {mobileNumber}</h2>
                         <div className={"idCont"}>
                             <div className="row">
                                 <div className="col-sm-4">
@@ -100,7 +102,7 @@ class IdCard extends Component{
                                 </div>
                                 <div className="col-sm-8">
                                     <p><span>{firstName} {lastName}</span></p>
-                                    <p>{mobile}</p>
+                                    <p>{mobileNumber}</p>
                                     <p>{email}</p>
                                     <p>{company}</p>
                                     <p>{location}</p>

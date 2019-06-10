@@ -39,13 +39,14 @@ export function sendOtp(otp,token) {
   });
 }
 
-export function sendVisitorId(visitorId) {  
+export function sendVisitorId(visitorId) {  //here mobile number is identity of visitor
 
+  debugger
   return axios({
     method: "post",
     url: `${baseUrl}/visitor/check_feedback`,
     data: {
-      visitor_card_no: visitorId,
+      mobile_no: visitorId,
     },
   
   });
@@ -99,19 +100,15 @@ export function sendImage(token,imageData,uploadType) {
   });
 }
 
-export function sendCheckList(token,meetingRooms,officeSpaces,others) {  
+export function sendCheckList(token,checklist) {  
 
 
   return axios({
     method: "post",
-    url: `${baseUrl}/visitor/upload_document`,
+    url: `${baseUrl}/visitor/checklist`,
     data: {
       entry_token: token,
-      checklist:{
-        Meeting_room: meetingRooms,
-        Office_space: officeSpaces,
-        Others: others
-      }
+      checklist
     },
   
   });
