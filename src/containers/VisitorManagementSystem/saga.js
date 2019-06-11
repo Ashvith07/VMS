@@ -180,7 +180,6 @@ function* sendOtp(action) {
 
             function* sendVisitorId(action) { //here mobile number is identity of visitor
 
-              debugger
               const {mobile} = action.payload
               let navigateTo = "feedback"
              

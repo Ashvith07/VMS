@@ -44,12 +44,10 @@ class CheckList extends Component{
   handleMeetingRooms(e){
 
 
-   console.log(e.target);
 
    
     const {target:{name,value,id}} = e
 
-    console.log(name,value,id);
     
      let arr = this.state.tempArr
      let newArray
@@ -63,14 +61,11 @@ class CheckList extends Component{
       const index = arr.indexOf(value)
 
       newArray = update(arr, {$splice: [[index, 1]]})
-      console.log(newArray);
       
     }else{
       newArray = update(arr, {$push: [value]}); // => [1, 2, 3, 4]
-      console.log(newArray);
     }
 
-    console.log('ppppppppp',this.state.checklists);
     
     this.setState({
         tempArr:newArray,
@@ -86,11 +81,9 @@ class CheckList extends Component{
 
   handleSubmit(){
 
-    console.log('qqqqqqqqqq',this.state);
     const {state} = this
 
     const checklist =_.omit(state,['checklists','currentHeading','tempArr'])
-    console.log('send',checklist); 
     
     const token = this.props.visitor.token
     this.props.sendCheckList(token,checklist)
@@ -111,7 +104,6 @@ class CheckList extends Component{
 
     const {checklists} = this.state    
 
-    console.log(this.state);
     
     if(requesting){
       return    <div className={"midContentPanel"}><Loader /></div>

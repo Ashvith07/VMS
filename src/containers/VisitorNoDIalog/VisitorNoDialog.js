@@ -13,16 +13,35 @@ class VisitorNoDialog extends PureComponent {
     mobile:''
   }
 
+
+
   handleVisitorMobile(e){
 
-    this.setState({
-      mobile:e.target.value
-    })
+    const {value} = e.target
+
+    if (value.length <= 10 ) {
+      this.setState({
+        mobile:value
+      })
+    }  
   }
 
   handleSubmit(){
     const mobile = this.state.mobile
     this.props.sendVisitorId(mobile) //here mobile number is identity of visitor
+  }
+
+  handleClose(closeSnack){
+  
+    closeSnack()
+    this.resetNumber()
+  }
+
+  resetNumber(){
+
+   this.setState({
+     mobile:''
+   })
   }
 
   render() {
@@ -35,7 +54,7 @@ class VisitorNoDialog extends PureComponent {
         <input style={{color:'black',background:'rgba(255, 255, 255, 1)'}} value={mobile} onChange={(e) => {this.handleVisitorMobile(e)}}/>
         <div className="row">
             <div className="col-sm-6">
-                <button onClick = {closeSnack} className="btn-orange full">Close</button>
+                <button onClick = {() =>this.handleClose(closeSnack)} className="btn-orange full">Close</button>
              </div>
               <div className="col-sm-6">
                   <Link onClick={() => this.handleSubmit()} to='/feedback' ><button className="btn-blue full">Next</button></ Link>

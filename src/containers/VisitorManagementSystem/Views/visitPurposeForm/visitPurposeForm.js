@@ -127,7 +127,6 @@ class VisitPurposeForm extends Component{
     const {requesting,errorType,error} = this.props.visitor
     const {visitPurpose,message,building,floor,wing,locations} = this.state
 
-    console.log(locations,'aaaaaaaaaaa');
     
 
     if (requesting) {

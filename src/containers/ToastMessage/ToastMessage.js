@@ -15,7 +15,7 @@ export class ToastMessage extends PureComponent {
       }, () => {
         setTimeout(() => {
          this.setState({ isActive: false });
-        }, 3000);
+        }, 5000);
       });
     }
   }
@@ -23,7 +23,6 @@ export class ToastMessage extends PureComponent {
   render() {
     const {errorType} = this.props
   //  const errorMessage = "Opps..!!! Something went Wrong..!!"
-    
     
     const { isActive } = this.state;
     return (

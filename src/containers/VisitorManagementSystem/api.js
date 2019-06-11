@@ -41,7 +41,6 @@ export function sendOtp(otp,token) {
 
 export function sendVisitorId(visitorId) {  //here mobile number is identity of visitor
 
-  debugger
   return axios({
     method: "post",
     url: `${baseUrl}/visitor/check_feedback`,

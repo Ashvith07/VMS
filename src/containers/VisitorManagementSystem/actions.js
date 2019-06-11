@@ -90,7 +90,6 @@ export function sendCheckList(token,checklist){
 }
 
 export function sendVisitorId(mobile){  //here mobile number is identity of visitor
-  debugger
   return{
     type:SEND_VISITOR_ID_REQ,
     payload:{mobile}
