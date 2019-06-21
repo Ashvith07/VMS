@@ -46,7 +46,7 @@ class CheckList extends Component{
 
 
    
-    const {target:{name,value,id}} = e
+    const {target:{value,id}} = e
 
     
      let arr = this.state.tempArr

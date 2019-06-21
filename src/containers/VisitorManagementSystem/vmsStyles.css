@@ -168,7 +168,7 @@
       /* width: 70%; */
   }
   .numberPad{
-      width: 250px;
+      width: 290px;
       margin: 0 auto;
   }
   .numberPad ul{
@@ -177,15 +177,18 @@
       justify-content: center;
   }
   .numberPad li{
-      padding: 5px 15px;
+      padding: 5px 15px 15px;
   }
   .numberPad li button{
       border-radius: 50%;
-      width: 36px;
-      height: 36px;
+      width: 56px;
+      height: 56px;
       border: #fff 1px solid;
       color: #fff;
       background: #000;
+      line-height: 56px;
+      text-align: center;
+      font-size: 20px;
 
       -webkit-transition: 0.5s ease-in-out;
       -moz-transition: 0.5s ease-in-out;
@@ -274,7 +277,7 @@
       /* background: transparent none repeat scroll 0 0; */
       background: rgba(255, 255, 255, .1);
       border: 0 none;
-      color: #8b8b8b;
+      color: #ccc;
       font-size: 14px;
       height: 36px;
       line-height: 36px;
