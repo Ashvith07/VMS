@@ -21,7 +21,8 @@ class CheckList extends Component{
   state={
     checklists:[],
     tempArr:[],
-    currentHeading:''
+    currentHeading:'',
+    requesting:true
   }
 
 
@@ -31,9 +32,11 @@ class CheckList extends Component{
     }).then((res) => {
       const {checklist} = res.data.result
       
-      this.setState({
+      this.setState(() => ({
+      //  checklists:checklist,
         checklists:checklist,
-      })
+        requesting:false
+      }))
       
     }).catch((err) => {
       console.log(err);
@@ -100,9 +103,9 @@ class CheckList extends Component{
 
   render(){
     
-    const{requesting,error,errorType} = this.props.visitor
+    const{error,errorType} = this.props.visitor
 
-    const {checklists} = this.state    
+    const {checklists,requesting} = this.state    
 
     
     if(requesting){

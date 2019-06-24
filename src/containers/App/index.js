@@ -65,11 +65,12 @@ class  App extends Component {
                             <Link to="/" >New Visitor</Link>
                           </li>
                           <li className={(currentPath === '/aboutUs') ? "active" : ''}>
-                            <Link to="/aboutUs" >About Us</Link>
+                            {/* <Link to="/aboutUs" >About Us</Link> */}
+                            <a href = "https://www.goodworkscowork.com/#About" target = "blank">About Us</a>
                           </li>
-                          <li className={(currentPath === '/termsCondition') ? "active" : ''}>
+                          {/* <li className={(currentPath === '/termsCondition') ? "active" : ''}>
                             <Link to="/termsCondition" >Terms &amp; Conditions</Link>
-                          </li>
+                          </li> */}
                           <li className={(currentPath === '/contactUs') ? "active" : ''}>
                             <Link to="/contactUs" >Contact Us</Link>
                           </li>

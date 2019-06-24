@@ -3,10 +3,7 @@ import { GwlLogo } from "./gwlLogo";
 import '../containers/VisitorManagementSystem/vmsStyles.css'
 
 const About =  () => {
-  // componentDidMount(){
-  //   console.log('didmount');
-    
-  // }
+  
     return (
      
       <div className="midContentPanel">
