@@ -240,6 +240,7 @@
   .formUi input{
       /* border-color: rgba(255, 255, 255, .5) 1px solid; */
       border: none;
+      border-radius: 0px;
       color: #ccc;
       line-height: 36px;
       margin-bottom: 15px;
@@ -250,6 +251,7 @@
   .formUi textarea{
       /* border-color: rgba(255, 255, 255, .5) 1px solid; */
       border: none;
+      border-radius: 0px;
       color: #ccc;
       height: 96px;
       margin-bottom: 15px;

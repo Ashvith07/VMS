@@ -21,7 +21,7 @@ class MobileOtp extends Component{
   
   const {error ,requesting,view} = props.visitor
   if(error && !requesting && view === "otp"){
-    props.history.push('/')
+    props.history.push('/mobile_entry')
 
    
   }
