@@ -29,11 +29,12 @@ class MobileOtp extends Component{
   return null
  }
 
- componentDidMount(){
-   this.setState({
-    message:'OTP has been sent to ' + this.props.visitor.mobile
-   })
- }
+//  componentDidMount(){
+//   // debugger
+//    this.setState({
+//     message:'OTP has been sent to ' + this.props.visitor.mobile
+//    })
+//  }
  handleSubmit(otp,e){
 
     const token = this.props.visitor.token
@@ -128,7 +129,7 @@ class MobileOtp extends Component{
           <div className={"midContentPanel"}>
                       <GwlLogo />
                      <section>
-                         <p className={"otpText"}>Please enter OTP sent to - <strong>{mobile}</strong></p>
+                         <p className={"otpText"}>OTP has been sent to  <strong>{mobile}</strong></p>
                          <div className={"mobBox"}>
                             <span className="phNo">{otp}</span>
                          </div>
