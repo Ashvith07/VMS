@@ -21,7 +21,7 @@ class MobileOtp extends Component{
   
   const {error ,requesting,view} = props.visitor
   if(error && !requesting && view === "otp"){
-    props.history.push('/mobile_entry')
+    props.history.push('/')
 
    
   }
@@ -29,6 +29,11 @@ class MobileOtp extends Component{
   return null
  }
 
+ componentDidMount(){
+   this.setState({
+    message:'OTP has been sent to ' + this.props.visitor.mobile
+   })
+ }
  handleSubmit(otp,e){
 
     const token = this.props.visitor.token

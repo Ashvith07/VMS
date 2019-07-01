@@ -11,14 +11,13 @@ import { FormField } from '../../../../components/formField';
 import { TextAreaField } from '../../../../components/textAreaField';
 import { sendVisitPurposeDetails } from '../../actions';
 
-
 class SiteVisit extends Component {
 
   state  = {
     message:'',
 
     requirements:'',
-    seats:'',
+    seats:'1-10',
     aboutUs:''
   }
 
@@ -75,8 +74,8 @@ class SiteVisit extends Component {
      
  
      if(token && requirements && seats && aboutUs){
-       const isValid = this.isNumeric(seats)
-       if(isValid){
+     //  const isValid = this.isNumeric(seats)
+       if(true){
          const formId = "SiteVisit"
          this.props.sendVisitPurposeDetails(token,requirements,seats,aboutUs,formId)
          
@@ -114,11 +113,21 @@ class SiteVisit extends Component {
                         value = {requirements}
                         changeHandle = {(e) => this.handleFormFields(e,1)}
                       />
-                      <FormField 
+                      {/* <FormField 
                         fieldTitle = "For how many seaters?"
                         value = {seats}
                         changeHandle = {(e) => this.handleFormFields(e,2)}
-                      />
+                      /> */}
+
+                      <label>Team Size options - </label>
+                        <div className="styledSelect">
+                        <select value= {seats} onChange={(e) => this.handleFormFields(e,2)}>
+                            <option value="1-10">1-10</option>
+                            <option value="10-50">10-50</option>
+                            <option value="50-100">50-100</option>
+                            <option value="100+">100+</option>
+                        </select>
+                         </div>
                       <FormField 
                         fieldTitle = "From where did you come to know about us?"
                         value = {aboutUs}
