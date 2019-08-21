@@ -1,0 +1,556 @@
+  @import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700');
+  body{
+      background: #333;
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      letter-spacing: 0.4px;
+  }
+  a{
+      -webkit-transition: 0.5s ease-in-out;
+      -moz-transition: 0.5s ease-in-out;
+      -o-transition: 0.5s ease-in-out;
+      transition: 0.5s ease-in-out;
+  }
+  a:hover, a:focus{
+      -webkit-transition: 0.5s ease-in-out;
+      -moz-transition: 0.5s ease-in-out;
+      -o-transition: 0.5s ease-in-out;
+      transition: 0.5s ease-in-out;
+      text-decoration: none;
+      
+  }
+  h1{
+    color:'red';
+  }
+  a:focus, 
+  button:focus,
+  input:focus{outline: none;}
+  ul{
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+  }
+  .modal{color: #333;}
+
+  .topMenu{
+      display: flex;
+      justify-content: center;
+  }
+  .head{
+      padding: 15px 15px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+      background: #333;
+  }
+  .nav.topMenu a{
+      padding-right: 0;
+      padding-left: 0;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      color: rgba(255, 255, 255, .75);
+      border-bottom: 2px solid transparent;
+  }
+  .nav.topMenu li+li{padding-left: 20px;}
+  .nav.topMenu .active a,
+  .nav.topMenu .active a:hover,
+  .nav.topMenu .active a:focus{
+      color: #fff;
+      border-bottom-color: #fff;
+  }
+  .nav.topMenu>li>a:hover,
+  .nav.topMenu>li>a:focus{
+      background-color: transparent;
+      border-bottom-color: rgba(255, 255, 255, .25);
+  }
+  .midContentWrapper{
+      display: table;
+      width: 100%;
+      height: 100%;
+      background-color: #333;
+      min-height: 100%;
+      position: absolute;
+  }
+  .midContent{
+      display: table-cell;
+      vertical-align: middle;
+  }
+  img.logo{
+      max-width: 200px;
+      margin-bottom: 25px;
+  }
+
+  .btnGreen{
+      margin-top: 15px;
+      background-color: #31bd7f;
+      border-color: #31bd7f;
+      font-size: 12px;
+      display: inline-block;
+      padding: 10px;
+      width: 100%;
+      color: #fff;
+      text-transform: uppercase;
+      margin-top: 15px;
+  }
+  .btnGreen:hover,
+  .btnGreen:focus,
+  .btnOutline:hover,
+  .btnOutline:focus{
+      color: #fff;
+      text-decoration: none;
+  }
+  .btnOutline{
+      background-color: transparent;
+      text-shadow: none;
+      border: 1px solid #fff;
+      font-size: 12px;
+      display: inline-block;
+      padding: 10px;
+      width: 200px;
+      color: #fff;
+      text-transform: uppercase;
+      margin-top: 10px;
+  }
+  .midContentPanel{
+      text-align: center;
+      padding: 85px 0;
+  }
+
+  /* -- Footer -- */
+  .footer{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+      background: #333;
+      color: rgba(255, 255, 255, .5);
+      text-align: center;
+  }
+  .footer a{
+      color: #fff;
+  }
+
+  /* -- Mobile Number -- */
+  img.logoSub{
+      max-width: 250px;
+      margin-bottom:15px;
+  }
+  .mobBox{
+      /* background: #fff; */
+      border-radius: 5px;
+      height: 30px;
+      display: flex;
+      /* width: 50%; */
+      font-size: 14px;
+      font-weight: 700;
+      /* color: #333; */
+      text-align: left;
+      padding: 0 10px;
+      margin: 15px 0;
+      letter-spacing: 0.5px;
+      justify-content: center;
+  }
+  .country{
+      line-height: 30px;
+      border-bottom: rgba(255, 255, 255, .2) 1px solid;
+      margin-right: 10px;
+      color: rgba(255, 255, 255, .5);
+      /* width: 25%; */
+  }
+  .country img{max-width: 16px; margin-right: 5px;}
+  .phNo{
+      border-bottom: rgba(255, 255, 255, .2) 1px solid;
+      line-height: 30px;
+      /* width: 70%; */
+  }
+  .numberPad{
+      width: 290px;
+      margin: 0 auto;
+  }
+  .numberPad ul{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+  .numberPad li{
+      padding: 5px 15px 15px;
+  }
+  .numberPad li button{
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      border: #fff 1px solid;
+      color: #fff;
+      background: #000;
+      line-height: 56px;
+      text-align: center;
+      font-size: 20px;
+
+      -webkit-transition: 0.5s ease-in-out;
+      -moz-transition: 0.5s ease-in-out;
+      -o-transition: 0.5s ease-in-out;
+      transition: 0.5s ease-in-out;
+  }
+  .numberPad li button:focus{
+      background: #fff;
+      color: #000;
+      
+      -webkit-transition: 0.5s ease-in-out;
+      -moz-transition: 0.5s ease-in-out;
+      -o-transition: 0.5s ease-in-out;
+      transition: 0.5s ease-in-out;
+  }
+  .numberPad li button.icon{
+      background: rgba(255, 255, 255, .5);
+      border-color: rgba(255, 255, 255, .5); 
+  }
+  .numberPad li button.icon img{max-width: 20px;}
+
+  /* -- OTP -- */
+  .otpText{
+      font-size: 14px;
+      color: #ccc;
+      margin-top: 20px;
+  }
+  .phNo.otp{
+      padding: 0 8px;
+      margin: 0 8px;
+  }
+
+  /* -- Entry form Page -- */
+  .formUi{
+      margin: 15px auto 0;
+      width: 300px;
+      text-align: left;
+  }
+  .formUi label{
+      font-size: 12px;
+      color: #ccc;
+      display: block;
+      text-align: left;
+
+      max-width: 100%;
+      margin-bottom: 5px;
+      font-weight: 700;
+  }
+  .formUi input{
+      /* border-color: rgba(255, 255, 255, .5) 1px solid; */
+      border: none;
+      border-radius: 0px;
+      color: #ccc;
+      line-height: 36px;
+      margin-bottom: 15px;
+      background: rgba(255, 255, 255, .1);
+      width: 100%;
+      padding: 0 10px;
+  }
+  .formUi textarea{
+      /* border-color: rgba(255, 255, 255, .5) 1px solid; */
+      border: none;
+      border-radius: 0px;
+      color: #ccc;
+      height: 96px;
+      margin-bottom: 15px;
+      background: rgba(255, 255, 255, .1);
+      width: 100%;
+      padding: 10px;
+      resize: none;
+  }
+
+  .formUi h3{
+       font-size: 15px;
+  }
+  .btnOutline.full,
+  .btn-green.full, .btn-orange.full, .btn-green.full, .btn-blue.full{width: 100%;}
+  button.btnOutline,
+  button.btnGreen{border-width: 0;}
+  .btnGreen i{
+      font-size: 12px;
+      margin-right: 6px;
+  }
+
+  .styledSelect select {
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      /* background: transparent none repeat scroll 0 0; */
+      background: rgba(255, 255, 255, .1);
+      border: 0 none;
+      color: #ccc;
+      font-size: 14px;
+      height: 36px;
+      line-height: 36px;
+      text-overflow: ellipsis;
+      width: 100%;
+      padding: 0 10px;
+  }
+  .styledSelect {
+      /* border-bottom: 1px solid #8b8b8b; */
+      background: url(./images/dropdown-arrow.png) no-repeat 100% 50%;
+      background-size: 15px;
+      height: 44px;
+      line-height: 44px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+  }
+  .styledSelect select:focus{border: none; outline: none;}
+
+  /* -- Photo capture -- */
+  .captureImage{
+      border: #fff 1px solid;
+      width: 300px;
+      height: 300px;
+      margin: 0 auto;
+  }
+  .terms li{
+      display: grid;
+      grid-template-columns: 30px auto;
+  }
+  .signature{
+      border: #fff 1px solid;
+      width: 100%;
+      height: 100px;
+      margin: 20px 0 10px;
+      background: #fff;
+  }
+
+  .imageCheckbox input[type=checkbox] {display:none;}
+  .imageCheckbox input[type=checkbox] + label{
+      background: url(./images/check-deselected.png) no-repeat 0 0;
+      height: 19px;
+      width: 19px;
+      display:inline-block;
+      padding: 0 0 0 0px;
+      vertical-align: middle;
+  }
+
+  .imageCheckbox input[type=checkbox]:checked + label{
+      background: url(./images/check-selected.png) no-repeat 0 0;
+      height: 19px;
+      width: 19px;
+      display:inline-block;
+      padding: 0 0 0 0px;
+  }
+
+  /* -- Id card -- */
+
+  .btn-green{
+    margin-top: 15px;
+    background-color: #31bd7f;
+    border-color: #31bd7f;
+    font-size: 12px;
+    display: inline-block;
+    padding: 10px;
+    width: 200px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  .btn-orange{
+    margin-top: 15px;
+    background-color: rgb(241,108,73);
+    border-color: rgb(241,108,73);
+    font-size: 12px;
+    display: inline-block;
+    padding: 10px;
+    width: 200px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  .btn-blue{
+    margin-top: 15px;
+    background-color: #337ab7;
+    border-color: #337ab7;
+    font-size: 12px;
+    display: inline-block;
+    padding: 10px;
+    width: 200px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .btn-outline.full {
+    width: 100%;
+}
+
+.btn-outline {
+    background-color: transparent;
+    text-shadow: none;
+    border: 1px solid #fff;
+    font-size: 12px;
+    display: inline-block;
+    padding: 10px;
+    width: 200px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+  .idCard{
+      border-radius: 10px;
+      /* background: #fff url(../images/cowork-logo.png) 98% 0% no-repeat;
+      background-size: 45px; */
+      color: #333;
+  }
+  .idCard p{
+      margin-bottom: 5px;
+      font-size: 15px;
+      word-wrap: break-word;
+  }
+
+  .idCard p span{font-weight: bold;}
+  .idImg{
+      border-radius: 10px;
+      max-width: 100%;
+      margin-bottom: 15px;
+  }
+  .idCard h2{
+      padding: 15px;
+      margin: 0;
+      font-size: 16px !important;
+      font-weight: bold;
+      text-transform: uppercase;
+      background: #fff url(./images/Coworks_logo_black.svg) 94% 50% no-repeat;
+      background-size: 90px;
+      color: #333;
+      border-radius: 10px 10px 0 0;
+      border-bottom: rgba(0, 0, 0, .2) 1px solid;
+  }
+  .idCont{padding: 15px; background: #ddd;}
+  .idPurpose{
+      border-top: rgba(0, 0, 0, .2) 1px solid;
+      padding: 7px 15px;
+      background: #fff;
+      border-radius: 0 0 15px 15px;
+  }
+  .idPurpose p{
+      font-size: 12px;
+      margin-bottom: 0;
+      display: grid;
+      grid-template-columns: 39% auto;
+  }
+  .idPurpose p span{font-weight: normal;}
+
+  .imageCheckbox input[type=radio] {display:none;}
+  .imageCheckbox input[type=radio] + label{
+      background: url(./images/check-deselected.png) no-repeat 0 0;
+      height: 40px;
+      width: 19px;
+      display:inline-block;
+    line-height:40px;
+    padding-left:15px;
+      vertical-align: middle;
+      background: rgba(0, 0, 0, .2);
+      border: rgba(255, 255, 255, .5) 1px solid;
+      color: rgba(255, 255, 255, .5);
+      font-size: 14px;
+      cursor: pointer;
+      width: 100%;
+  }
+  .imageCheckbox input[type=radio]:checked + label{
+      /* background: url(./images/check-selected.png) no-repeat 0 0;
+      height: 19px;
+      width: 19px;
+      display:inline-block;
+      padding: 5px 10px;
+      background: rgba(255, 255, 255, .75) url(./images/tick.png) no-repeat 97% 50%;
+      background-size: 15px;
+      border: rgba(255, 255, 255, .75) 1px solid;
+      color: #000;
+      font-size: 14px;
+      cursor: pointer;
+      width: 100%; */
+
+
+      display: inline-block;
+    height:40px;
+    line-height: 40px;
+      background: rgba(255, 255, 255, .75) url(./images/tick.png) no-repeat 97% 50%;
+      background-size: 15px;
+      border: rgba(255, 255, 255, .75) 1px solid;
+      color: #000;
+      font-size: 14px;
+      cursor: pointer;
+      width: 100%;
+  }
+
+  /* -- Media Query -- */
+  @media screen and (max-width: 640px){
+      .nav.top-menu a{font-size: 12px;}
+      .nav.top-menu li+li{padding-left: 8px;}
+      .footer a{display: block;}
+  }
+
+  .terms li span i{
+    
+       margin-top: 4px;
+    
+       font-size: 10px;
+    
+       color: rgba(255, 255, 255, .75);
+    
+    }
+    .formUi h2{
+    
+       font-size: 20px;
+    
+    }
+    
+    .terms li a, .formUi a{color: #31bd7f;}
+    
+    .id-card h2 span{color: #31bd7f;}
+    
+    .id-img.no-bdr{
+      border-radius: 10px;
+      max-width: 100%;
+      margin-bottom: 15px;
+    }
+    
+    .smiley{display: inline-block!important; margin-bottom: 30px; margin-right: 5px;}
+    
+    .smiley .imageCheckbox input[type=radio] + label{
+    
+       height: 49px;
+    
+       width: 49px;
+    
+       display:inline-block;
+    
+       vertical-align: middle;
+    
+       cursor: pointer;
+    
+       border: none;
+    
+       opacity: 0.2;
+    }
+    .smiley .imageCheckbox input[type=radio]:checked + label{
+       display:inline-block;
+       cursor: pointer;
+       opacity: 1;
+    }
+    .smiley.happy .imageCheckbox input[type=radio] + label{
+       background: url(./images/smiley-happy.png) no-repeat 50% 50%;
+       background-size: 65px;
+    }
+    .smiley.sad .imageCheckbox input[type=radio] + label{
+       background: url(./images/smiley-sad.png) no-repeat 50% 50%;
+       background-size: 65px;
+    }
+    .smiley.avarage .imageCheckbox input[type=radio] + label{
+       background: url(./images/smiley-avarage.png) no-repeat 50% 50%;
+       background-size: 65px;
+    }
+    .smiley.very-happy .imageCheckbox input[type=radio] + label{
+       background: url(./images/smiley-very-happy.png) no-repeat 50% 50%;
+       background-size: 65px;
+    }
+    .smiley.angry .imageCheckbox input[type=radio] + label{
+       background: url(./images/smiley-angry.png) no-repeat 50% 50%;
+       background-size: 65px;
+    }
+    

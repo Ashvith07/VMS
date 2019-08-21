@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:100,300,400,500,600,700');
+
+.app{
+  background-color: #333;
+  touch-action: manipulation;
+}
+
+
+.mainDiv a, .mainDiv a:focus, .mainDiv a:hover {
+  color: #fff;
+}
+
+/* Custom default button */
+
+.btnOutline {
+  background-color: transparent;
+  text-shadow: none;
+  border: 1px solid #fff;
+  font-size: 12px;
+  display: inline-block;
+  padding: 10px;
+  width: 200px;
+  font-weight: 600;
+}
+
+.btnGreen {
+  background-color: #31bd7f;
+  border-color: #31bd7f;
+}
+
+.btnOutline:hover {
+  text-decoration: none;
+}
+
+.coverHeading {
+  margin-bottom: 35px;
+}
+
+/*
+ * Base structure
+ */
+
+.mainDiv {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+  height: 100%;
+}
+
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+
+.siteWrapper {
+  display: table;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  /* For at least Firefox */
+  min-height: 100%;
+  /* -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, .5); */
+  position: absolute;
+}
+
+.siteWrapperInner {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.coverContainer {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Padding for spacing */
+
+.inner {
+  padding: 15px 15px 0;
+}
+
+/*
+ * Header
+*/
+
+.mastheadBrand {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mastheadNav>li {
+  display: inline-block;
+}
+
+.mastheadNav>li+li {
+  margin-left: 20px;
+}
+
+.mastheadNav>li>a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  /* IE8 proofing */
+  color: rgba(255, 255, 255, .75);
+  border-bottom: 2px solid transparent;
+}
+
+.mastheadNav>li>a:focus,.mastheadNav>li>a:hover,  {
+  background-color: transparent;
+  border-bottom-color: #a9a9a9;
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.mastheadNav>.active>a, .mastheadNav>.active>a:focus,.mastheadNav>.active>a:hover,  {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+
+/*
+ * Cover
+*/
+
+.cover {
+  padding: 0 20px;
+}
+
+.cover .btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+/*
+ * Footer
+*/
+
+.mastfoot {
+  color: #999;
+  /* IE8 proofing */
+  color: rgba(255, 255, 255, .5);
+}
+
+.masthead {
+  position: fixed;
+  top: 0;
+  background: #333;
+  width: 100%;
+  text-align: center;
+}
+
+/*
+ * Affix and center
+*/
+@media (max-width: 360px){
+  /*.masthead {
+    position: fixed;
+    top: 0;
+    background: #333;
+    width: 100%;
+    left: 0;
+  }
+  .mastfoot {
+    position: fixed;
+    bottom: 0;
+    background: #333;
+    width: 100%;
+    left: 0;
+  }*/
+  .mastfoot{
+    text-align: center;
+    font-size: 12px
+  }
+}
+
+@media (min-width: 580px) {
+  /* Pull out the header and footer */
+  
+
+  .headInner {
+    width: 700px;
+    margin: 0 auto;
+  }
+  /* Start the vertical centering */
+  .siteWrapperInner {
+    vertical-align: middle;
+  }
+  /* Handle the widths */
+  .masthead, .mastfoot, .coverContainer {
+    width: 100%;
+    /* Must be percentage or pixels for horizontal alignment */
+  }
+  .masthead {
+    position: fixed;
+    top: 0;
+    background: #333;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .mastfoot {
+    position: fixed;
+    bottom: 0;
+    background: #333;
+    width: 100%;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .mastfoot{
+    text-align: center;
+    font-size: 12px
+  }
+}
+
+.footerLink{
+  color:white
+}
+
+@media (min-width: 992px) {
+  /* .masthead, .mastfoot,*/ .coverContainer { 
+    width: 700px;
+  }
+  .coverContainer
+  {
+    width:100%!important;
+  }
+}
+
+@media (min-width: 768px) {
+  .mastheadBrand {
+    float: left;
+  }
+  .mastheadNav {
+    /*float: right;*/
+  }
+}
+
+@media screen and (max-width: 767px){
+ .mastheadNav>li+li {
+  margin-left: 8px;
+}
+
+.mastheadNav>li>a {
+  font-size: 14px;
+  }
+}
