@@ -27,7 +27,7 @@ class CheckList extends Component{
 
 
   componentDidMount(){
-    axios.post('http://142.93.57.132/Goodworks-VMS-php/checklist',{
+    axios.post('https://vmsbe.goodworkscowork.com/checklist',{
      // entry_token:token
     }).then((res) => {
       const {checklist} = res.data.result

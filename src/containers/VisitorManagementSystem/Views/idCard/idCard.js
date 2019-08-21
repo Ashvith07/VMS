@@ -23,7 +23,7 @@ class IdCard extends Component{
 
     const {token} = this.props.visitor
 
-    axios.post('http://142.93.57.132/Goodworks-VMS-php/visitor/card',{
+    axios.post('https://vmsbe.goodworkscowork.com/visitor/card',{
       entry_token:token
     }).then((res) => {
       const {visitor_image,visitor_signature,visitor_ID_no,phone_no} = res.data.result

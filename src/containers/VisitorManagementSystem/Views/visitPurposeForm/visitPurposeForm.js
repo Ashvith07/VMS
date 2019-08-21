@@ -26,7 +26,7 @@ class VisitPurposeForm extends Component{
   }
 
   componentDidMount(){
-    axios.post('http://142.93.57.132/Goodworks-VMS-php/cowork_locations',{
+    axios.post('https://vmsbe.goodworkscowork.com/cowork_locations',{
      // entry_token:token
     }).then((res) => {
       const {result} = res.data
