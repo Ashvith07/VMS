@@ -61,36 +61,44 @@ class Terms extends Component{
 
   handleCheck(){
     const {isChecked} = this.state
-   
-
-    
-
-    if(isChecked){
+ 
+    const isBox =this.sigPad.isEmpty()
+    if(!isChecked){
       this.setState({
-            nextDisabled:true,
+            nextDisabled:false,
             nxtBtnOpacity:'0.7',
             isChecked:!this.state.isChecked,
           })
-    }else{
-      const isBox =this.sigPad.isEmpty()
+    }
+    else if(isChecked && !isBox){
+      this.setState({
+              signatureData: this.sigPad.getTrimmedCanvas()
+              .toDataURL('image/jpg'),
+              isChecked:!this.state.isChecked,
+              nextDisabled:true,
+              nxtBtnOpacity:'1',
+            })
+    }
+    // else{
+    //   const isBox =this.sigPad.isEmpty()
+    //   if(isBox){
+    //     this.setState({
+    //       signatureData: '',
+    //         isChecked:!this.state.isChecked,
+    //         nextDisabled:false,
+    //         nxtBtnOpacity:'1',
+    //     })
+    //   }else{
+    //     this.setState({
+    //       signatureData: this.sigPad.getTrimmedCanvas()
+    //       .toDataURL('image/jpg'),
+    //       isChecked:!this.state.isChecked,
+    //       nextDisabled:false,
+    //       nxtBtnOpacity:'1',
+    //     })
+    //   }
+    // }   
 
-      if(isBox){
-        this.setState({
-          signatureData: '',
-            isChecked:!this.state.isChecked,
-            nextDisabled:false,
-            nxtBtnOpacity:'1',
-        })
-      }else{
-        this.setState({
-          signatureData: this.sigPad.getTrimmedCanvas()
-          .toDataURL('image/jpg'),
-          isChecked:!this.state.isChecked,
-          nextDisabled:false,
-          nxtBtnOpacity:'1',
-        })
-      }
-    }   
   }
 
   handleSubmit(e){
@@ -99,15 +107,15 @@ class Terms extends Component{
     const uploadType = "signature"
 
 
-    if (signatureData !== "" && isChecked && token) {
+    if (signatureData !== "" && isChecked && token ) {
       this.props.sendImage(token,signatureData,uploadType)
     }else{
       this.setState({
         message:'Signature is mandatory,Please sign on the white box'
       })
       e.preventDefault()
-    }
- 
+}
+     
     
   }
 
@@ -153,7 +161,7 @@ class Terms extends Component{
                         </div>
                     </label>  
                 </div>
-                <button onClick={this.clear} className={classNames("btnGreen", "full")}>Clear</button>
+                <button onClick={this.clear} className={classNames("btn-orange", "full")}>Clear</button>
                 <Link onClick={(e) => this.handleSubmit(e)} to="/idcard_generate"><button style= {{opacity:nxtBtnOpacity}} disabled={nextDisabled} className={classNames("btnGreen", "full")}>Next</button></Link>
             </section>
         <div style={{ height : "30px", lineHeight : "30px"}}>
