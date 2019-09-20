@@ -13,7 +13,7 @@
  */
 
 import React,{Component} from 'react';
-import { BrowserRouter,Switch, Route,Link } from 'react-router-dom';
+import { HashRouter,Switch, Route,Link } from 'react-router-dom';
 import classNames from 'classnames';
 import './App.css'
 import MobileEntry from '../VisitorManagementSystem/Views/mobileEntry/mobileEntry';
@@ -34,7 +34,7 @@ import GeneralTermsConditions from '../../components/generalTermsConditions';
 import About from '../../components/about';
 
 class  App extends Component {
-  
+
 
     componentDidMount(){
       document.title = "VMS - GoodWork CoWork"
@@ -45,13 +45,13 @@ class  App extends Component {
       const currentPath = window.location.pathname;
 
       return (
-        <BrowserRouter>
-  
+        <HashRouter>
+
         <div className="app">
           <div className="siteWrapper" >
             <div className="siteWrapperInner">
               <div className={classNames("coverContainer", 'marginTopLandingPages')} >
-                <div className={classNames("masthead", 'clearfix')} > 
+                <div className={classNames("masthead", 'clearfix')} >
                   <div className="inner">
                     <div className="headInner">
                       {/* <Link to="/">
@@ -85,28 +85,28 @@ class  App extends Component {
             <Route path="/entry_form" component={VisitorEntryForm} />
             <Route path="/visit_purpose" component={VisitPurposeForm} />
             <Route path="/photo_capture" component={PhotoCapture} />
-    
+
             <Route path="/purposeDetail/Event" component={Events} />
             <Route path="/purposeDetail/Meeting" component={Meeting} />
             <Route path="/purposeDetail/Site Visit" component={SiteVisit} />
-    
+
             <Route path="/visit_terms_condition" component={Terms} />
             <Route path="/idcard_generate" component={IdCard} />
             <Route path="/feedback" component={FeedbackForm} />
             <Route path="/checklist" component={Checklist} />
-    
-            
-    
+
+
+
             <Route path="/aboutUs" component={About} />
             <Route path="/termsCondition" component={GeneralTermsConditions} />
             <Route path="/contactUs" component={ContactUs} />
-    
+
             <Route extact path="/" component={PreEntry} />
-             
-    
-    
+
+
+
           </Switch>
-      
+
                 <div className="mastfoot">
                   <div className="inner">
                     <p>
@@ -119,12 +119,12 @@ class  App extends Component {
           </div>
           {/* <GlobalStyle /> */}
         </div>
-        </BrowserRouter>  
+        </HashRouter>
       );
     }
     }
 
-  
-   
+
+
 
 export default App
