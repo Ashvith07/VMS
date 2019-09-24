@@ -92,12 +92,14 @@ class MobileOtp extends Component{
    
        if(otp.includes('-')){
          const _position = otp.indexOf('-')
+         if(_position > 0){
          const correctOtp = this.backReplaceAt(otp,otp[_position-1],'-')
    
          this.setState({
            otp:correctOtp,
            message:''
          })
+        }
        }else{
      
          const length = otp.length

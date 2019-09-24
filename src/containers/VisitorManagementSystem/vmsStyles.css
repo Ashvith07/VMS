@@ -208,7 +208,10 @@
       background: rgba(255, 255, 255, .5);
       border-color: rgba(255, 255, 255, .5); 
   }
-  .numberPad li button.icon img{max-width: 20px;}
+  .numberPad li button.icon img{
+      max-width: 20px;
+      margin-top: -6px;
+    }
 
   /* -- OTP -- */
   .otpText{
@@ -307,10 +310,18 @@
       height: 300px;
       margin: 0 auto;
   }
-  .terms li{
+  /* .terms li{
       display: grid;
       grid-template-columns: 30px auto;
+  } */
+
+  .termcond{
+    /* width: 110px; */
+    height: 180px;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
+
   .signature{
       border: #fff 1px solid;
       width: 100%;

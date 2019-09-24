@@ -83,7 +83,6 @@ state = {
   backReplaceAt(string, index, replace) {
       const lastduplicateChar = string.lastIndexOf(index)
       
-      
       return string.substring(0, lastduplicateChar) + replace + string.substring(lastduplicateChar + 1);
     }
 
@@ -92,13 +91,16 @@ state = {
 
     if(mobile.includes('-')){
       const _position = mobile.indexOf('-')
+      // console.log(_position);
      // const newMobile = mobile.replace(mobile[_position - 1], "-");
+      if(_position > 0){
       const correctMobile = this.backReplaceAt(mobile,mobile[_position-1],'-')
       
       this.setState({
         mobile:correctMobile,
         message:''
       })
+    }
     }else{
    
       const length = mobile.length
