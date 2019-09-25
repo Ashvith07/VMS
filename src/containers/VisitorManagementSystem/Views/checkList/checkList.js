@@ -115,6 +115,8 @@ class CheckList extends Component{
     return(
       <div className="midContentPanel">
       <GwlLogo />
+      <h5><strong> This page is meant for Administrative use only</strong></h5>
+      <h5>Please check the entity that has been showcased to the visitor</h5>
       <section className="formUi">
           <div className="terms">
             
