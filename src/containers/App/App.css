@@ -105,13 +105,13 @@
   border-bottom: 2px solid transparent;
 }
 
-.mastheadNav>li>a:focus,.mastheadNav>li>a:hover,  {
+.mastheadNav>li>a:focus,.mastheadNav>li>a:hover  {
   background-color: transparent;
   border-bottom-color: #a9a9a9;
   border-bottom-color: rgba(255, 255, 255, .25);
 }
 
-.mastheadNav>.active>a, .mastheadNav>.active>a:focus,.mastheadNav>.active>a:hover,  {
+.mastheadNav>.active>a, .mastheadNav>.active>a:focus,.mastheadNav>.active>a:hover  {
   color: #fff;
   border-bottom-color: #fff;
 }
@@ -230,9 +230,9 @@
   .mastheadBrand {
     float: left;
   }
-  .mastheadNav {
-    /*float: right;*/
-  }
+  /* .mastheadNav {
+    float: right;
+  } */
 }
 
 @media screen and (max-width: 767px){
@@ -243,4 +243,13 @@
 .mastheadNav>li>a {
   font-size: 14px;
   }
+}
+
+
+
+.nav>li>a:focus, .nav>li>a:hover {
+  text-decoration: none;
+  background-color: #eee;
+  color: #333333 !important;
+  padding: 10px 2px;
 }

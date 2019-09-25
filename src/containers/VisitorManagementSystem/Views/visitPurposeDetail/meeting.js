@@ -96,17 +96,20 @@ class Meeting extends Component {
                 <div className="midContentPanel">
                   <GwlLogo />
                     <section className="formUi">
-                    <FormField 
-                          fieldTitle="Who are you meeting?"
-                          value = {contactPerson}
-                          changeHandle = {(e) => this.handleFormFields(e,1)}
-                    />
+
                     <FormField 
                           fieldTitle="Which company? "
                           value = {company}
                           changeHandle = {(e) => this.handleFormFields(e,2)}
                     />
 
+                    <FormField 
+                          fieldTitle="Who are you meeting?"
+                          value = {contactPerson}
+                          changeHandle = {(e) => this.handleFormFields(e,1)}
+                    />
+                    
+                    
                     <label>Meeting purpose </label>
                         <div className="styledSelect">
                         <select value={meetingPurpose} onChange={(e) => this.handleFormFields(e,3)}>

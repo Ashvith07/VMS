@@ -66,7 +66,7 @@ class  App extends Component {
                           </li>
                           <li className={(currentPath === '/aboutUs') ? "active" : ''}>
                             {/* <Link to="/aboutUs" >About Us</Link> */}
-                            <a href = "https://www.goodworkscowork.com/#About" target = "blank">About Us</a>
+                            <a href = "https://www.goodworkscowork.com" target = "blank">About Us</a>
                           </li>
                           {/* <li className={(currentPath === '/termsCondition') ? "active" : ''}>
                             <Link to="/termsCondition" >Terms &amp; Conditions</Link>

@@ -8,8 +8,10 @@ const ContactUs = () => {
             <div className="midContentPanel">
               
                <GwlLogo />
-              <section className="formUi">
-                <h2>Sunil Kumar </h2>
+              <section className="formUi" style={{margin: "100px auto 0"}}>
+                <h3>For further assistance, please send a mail to  <a href="mailto:contact@goodworkscowork.com">contact@goodworkscowork.com</a> </h3>
+                
+                {/* <h2>Sunil Kumar </h2>
                 <p>
                   Phone No: <strong />
                   <br />
@@ -31,7 +33,7 @@ const ContactUs = () => {
                   </a>
                   <br />
                   Designation: <strong>Finance and legal manager</strong>
-                </p>
+                </p> */}
               </section>
             </div>
     );
