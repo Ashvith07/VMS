@@ -50,7 +50,7 @@ class VisitorNoDialog extends PureComponent {
     const {isActive,closeSnack} = this.props;
     return (
       <div className = {isActive ? ["vidsnackbar", "show"].join(" ") : "vidsnackbar"}>
-        <div>Mobile Number</div>
+        <div>Visitor's Mobile Number</div>
         <input style={{color:'black',background:'rgba(255, 255, 255, 1)'}} value={mobile} onChange={(e) => {this.handleVisitorMobile(e)}}/>
         <div className="row">
             <div className="col-sm-6">
