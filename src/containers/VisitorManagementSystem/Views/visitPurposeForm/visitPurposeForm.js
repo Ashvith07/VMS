@@ -160,7 +160,7 @@ class VisitPurposeForm extends Component{
                         <div className="row">
                             <div className="col-sm-6">
                                 <label>Floor </label>
-                                <input type="text" value={floor} onChange = {(e) => this.handleFormFields(e,2)}/>
+                                <input type="number" value={floor} onChange = {(e) => this.handleFormFields(e,2)}/>
                             </div>
                             <div className="col-sm-6">
                                 <label>Wing </label>

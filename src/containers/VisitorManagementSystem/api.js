@@ -130,7 +130,7 @@ export function sendFeedback(token,rating,suggestions) {
 
 export function sendPurposeDetail(token,f1,f2,f3,formId) {  
 
-  if(formId === "siteVisit"){
+  if(formId === "SiteVisit"){
 
     return axios({
       method: "post",
