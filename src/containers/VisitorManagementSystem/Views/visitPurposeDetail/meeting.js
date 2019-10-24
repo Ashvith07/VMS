@@ -98,17 +98,17 @@ class Meeting extends Component {
                     <section className="formUi">
 
                     <FormField 
-                          fieldTitle="Which company? "
-                          value = {company}
-                          changeHandle = {(e) => this.handleFormFields(e,2)}
-                    />
-
-                    <FormField 
                           fieldTitle="Who are you meeting?"
                           value = {contactPerson}
                           changeHandle = {(e) => this.handleFormFields(e,1)}
                     />
                     
+                    <FormField 
+                          fieldTitle="Which Organisation? "
+                          value = {company}
+                          changeHandle = {(e) => this.handleFormFields(e,2)}
+                    />
+
                     
                     <label>Meeting purpose </label>
                         <div className="styledSelect">

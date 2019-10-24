@@ -102,7 +102,7 @@ class Event extends Component {
                           changeHandle = {(e) => this.handleFormFields(e,1)}
                     />
                     <FormField 
-                          fieldTitle="Which company? "
+                          fieldTitle="Host Organisation? "
                           value = {company}
                           changeHandle = {(e) => this.handleFormFields(e,2)}
                     />

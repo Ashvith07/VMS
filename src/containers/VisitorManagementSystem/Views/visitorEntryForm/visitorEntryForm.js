@@ -163,7 +163,7 @@ class VisitorEntryForm extends Component{
                         changeHandle =  {(e) => this.handleFormFields(e,3)}
                       />
                       <FormField 
-                        fieldTitle="Company Name : "
+                        fieldTitle="Your Organisation : "
                         value={this.state.companyName}
                         changeHandle =  {(e) => this.handleFormFields(e,4)}
                       />
